@@ -26,4 +26,5 @@
 
 # 工作
 
+*  [遇到的问题及解决方式](https://github.com/yuxl01/read-Notes/blob/master/work/question.md)
 
