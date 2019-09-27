@@ -15,7 +15,7 @@
 
 # 视频
 
-
+[.Net高级](https://github.com/yuxl01/read-Notes/blob/master/vedio/CLR%20Via%20C%23.md)
 
 
 
