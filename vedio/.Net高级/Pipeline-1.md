@@ -1,6 +1,6 @@
 # Pipeline(一)
 
-### ps
+### 思考的问题
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MVC,WebForm 之类的框架做应用程序的开发之后部署到IIS,用户在浏览器输入url地址之后是怎么到达我们的应用程序？
 
 ##### 一、什么是管道模型?
