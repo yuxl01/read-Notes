@@ -97,15 +97,51 @@ public class Test
 ```
 
 
+#### 八、泛型缓存
+1、泛型类的静态字段，是独立的,可以实现缓存(放入内存中，利用静态构造函数或者静态字段实现)
+2、泛型缓存可以为不同的类型实现缓存
+``` .cs
+//利用静态构造函数实现缓存
+public class GenericCache<T>
+{
+    static GenericCache()
+    {
+        _TypeTime = string.Format("{0}_{1}", typeof(T).FullName, DateTime.Now.ToString("yyyyMMddHHmmss.fff"));
+    }
 
-#### 八、泛型的优点
+    private static string _TypeTime = "";
+
+    public static void GetCache()
+    {
+        console.writeLine(_TypeTime);
+    }
+}
+//调用会创建5个不同类型，由于静态构造函数后续的调用各个类型分别不会再次构造类型
+for (int i = 0; i < 5; i++)
+{
+    GenericCache<int>.GetCache();
+    Thread.Sleep(10);
+    GenericCache<long>.GetCache();
+    Thread.Sleep(10);
+    GenericCache<DateTime>.GetCache();
+    Thread.Sleep(10);
+    GenericCache<string>.GetCache();
+    Thread.Sleep(10);
+    GenericCache<GenericCacheTest>.GetCache();
+    Thread.Sleep(10);
+}
+```
+
+#### 九、泛型的优点
 1、可实现延迟加载,由.net编译过程流程产生</br>
 2、
-#### 九、泛型实现原理及.NetFarmWork编译
+#### 十、泛型实现原理及.NetFarmWork编译
 1、vs编译器将C#代码编译为exe或者dll(产生IL和metadata)。</br>
 2、exe和dll在运行时会经过CLR里的JIT再次编译为机器码被cpu执行。</br>
 3、语言升级兼容"<>"，编译器升级识别"<>"将"<>"在IL中编译为占位符,可以通过反编译软件看到第一编译后的IL代码(\`1代表一个参数\`2代表2个参数)。</br>
 4、再经过JIT即时编译的时候,根据调用方指定的类型,编译为原始类型。</br>
+5、同一个泛型类型，传入不同的参数，经过JIT二次编译会变成不同类型。</br>
+6、静态字段/静态构造函数只会初始化一次，常驻内存。
 
 ### 用object传参是邪恶的
   为什么说object作为参数是邪恶的,第一由于会发生装箱拆箱的转换，所以在性能上会有一定的损失,第二由于c#本身特点的原因,Obejct是一切类型的基类,那么所有具体类型作为参数出现的地方都可以使用Object来代替,但是他是不安全的，会导致部分代码编译不会报错，执行时会报错。
