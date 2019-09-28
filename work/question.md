@@ -3,7 +3,7 @@
 ![原型图片](https://github.com/yuxl01/read-Notes/blob/master/imag/20171015-1.png)
 
 ###### * 分析及实现思路
-分析报表结构：A列包含N个B列,B列包含N个C和D列,C,D列下面由N个E列,得出数据结构呈树形，因为要在数据库利用SQL或者存储过程查询实现有一定难度,所以选择利用C#代码实现</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分析报表结构：A列包含N个B列,B列包含N个C和D列,C,D列下面由N个E列,得出数据结构呈树形，因为要在数据库利用SQL或者存储过程查询实现有一定难度,所以选择利用C#代码实现</br>
 </br>
 1、首先根据结构制定存储的数据结构
 ```.cs
