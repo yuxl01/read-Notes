@@ -1,36 +1,24 @@
-# Generic (-)
+# Generic (一)
 
 ### ps
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;泛型（generic）是C#语言2.0和通用语言运行时（CLR）的一个新特性,泛型为.NET框架引入了类型参数（type parameters）的概念类型参数使得设计类和方法时，不必确定一个或多个具体参数，其的具体参数可延迟到客户代码中声明、实现。
 
-#### 一、泛型方法的定义
+#### 一、泛型方法的定义(部分代码使用的是c# 7.0的语法)
 ``` .cs
 //带返回值的泛型
-public List<T> Method<T>()
-{
-    return new List<T>(); 
-}
+public List<T> Method<T>() => new List<T>();
 //泛型参数
-public string method<T>(T t)
-{
-    return "";
-}
+public string method<T>(T t)=> "";
 ```
 #### 二、泛型接口的定义
 ``` .cs
 //泛型接口
-public interface CustomCollection<T>
-{
-    
-}
+public interface CustomCollection<T>{}
 ```
 #### 三、泛型类的定义
 ``` .cs
 //泛型类
-public class CustomClass<T>
-{
-    
-}
+public class CustomClass<T>{}
 ```
 
 #### 四、泛型委托的定义
