@@ -15,7 +15,7 @@
 
 # 视频
 
-*  [.Net高级](https://github.com/yuxl01/read-Notes/blob/master/vedio/.Net%E9%AB%98%E7%BA%A7.md)
+*  [.Net](https://github.com/yuxl01/read-Notes/blob/master/vedio/.Net%E9%AB%98%E7%BA%A7.md)
 
 *  [JavaScript(一)](https://github.com/yuxl01/read-Notes/blob/master/vedio/JavaScript.md)
 
