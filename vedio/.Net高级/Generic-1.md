@@ -57,9 +57,44 @@ public static void Method<T>(T t) where T : C1,new()
 ```
 
 
-#### 七、泛型的逆变与协变（out 协变：修饰返回值 in 逆变：修饰参数 ps：`只能放在接口或者委托的泛型参数前面`）
+#### 七、泛型的逆变与协变
 
+```  .cs
+public class Test
+{
+  /// <summary>
+  /// 父类A
+  /// </summary>
+  public class A { }
 
+  /// <summary>
+  /// 子类B
+  /// </summary>
+  public class B:A { }
+
+ A a1 = new A();//可以构造实例
+ B b1 = new B();//可以构造实例
+ A a2 = new B();//可以构造实例
+ 
+ //集合A可以构造
+ List<A> _aList = new List<A>();
+ 
+ //不能创建实例,因为是一个新的类型List<A>类型，List<B>类型
+ List<A> _bList = new List<B>();
+ 
+ //利用协变，接口泛型参数加out修饰
+ IEnumerable<A> a_list = new List<B>();
+ 
+ //利用逆变，接口泛型参数加in修饰
+ IEnumerable<B> a_list = new List<A>();
+}
+
+1、List<A> _bList = new List<B>()协变是由父类向子类的转换</br>
+2、List<B> _bList = new List<A>()逆变是由子类像父类的转换</br>
+3、out 协变：修饰返回值，表示T在类型中只能作为返回值。</br>
+4、in 逆变：修饰参数，表示T在类型中只能作为参数。</br>
+5、只能放在接口或者委托的泛型参数前面。</br>
+```
 
 
 
