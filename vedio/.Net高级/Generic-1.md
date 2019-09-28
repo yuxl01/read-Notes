@@ -18,17 +18,28 @@ public string method<T>(T t)
 ```
 #### 二、泛型接口的定义
 ``` .cs
-//带返回值的泛型
+//泛型接口
 public interface CustomCollection<T>
 {
     
 }
 ```
 #### 三、泛型类的定义
-
+``` .cs
+//泛型类
+public class CustomClass<T>
+{
+    
+}
+```
 
 #### 四、泛型委托的定义
-
+``` .cs
+//带参数的泛型委托
+ public Action<T> act = null;
+ //带一个返回值的泛型委托
+ public Func<T> fuc = null;
+```
 
 #### 五、泛型的优点
 
