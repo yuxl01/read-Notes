@@ -1,6 +1,6 @@
 # read-Notes 
 
-为了不让知识点限制了我们的想象力,所以必须学习,不积跬步，无以至千里；不积小流，无以成江海。
+每个人都有潜力成为一个技术大牛,只是知识点限制了我们的想象力,不积跬步，无以至千里；不积小流，无以成江海。
 
 # 书籍
 *  [Clr Via C#](https://github.com/yuxl01/read-Notes/blob/master/book/CLR%20Via%20C%23.md)
