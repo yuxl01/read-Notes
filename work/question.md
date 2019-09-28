@@ -31,14 +31,13 @@ public class C
 public class E
 {
    public string attrbute1{get;set;}
-   public string attrbute2{get;set;}
-   public string attrbute3{get;set;}
 }
 ```
 2、再根据从数据库查询出的结果,利用Linq或者Lambda进行不同维度的分组，最后将结果遍历插入Result对象中由json对象传到前端</br>
 </br>
 3、在前端js中遍历对应的json对象,绑定到Html页面</br>
 4、导出(后面补充)
+</br>
 ###### * 存在的弊端及优化思路
 1、由于需要转换成指定格式和计算小计合计后端代码会涉及多次循环遍历,可以在存储过程中将预先需要分组的求和的数据查询好,将代码中计算的过程降到最小</br>
 </br>
