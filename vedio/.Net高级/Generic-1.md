@@ -31,7 +31,7 @@ public class CustomClass<T>{}
 #### 五、泛型代码中的 default 关键字
 1、T将是值类型还是引用类型</br>
 2、如果T是值类型，那么T将是数值还是结构</br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当T为引用类型时 T=null,而T=0对数值类型有效,结构体却不行,可以使用Default关键字兼容3种,它对引用类型返回空，对值类型的数值型返回零,遇到结构体会根据结构成员的类型返回0或者null
+&nbsp;&nbsp;*当T为引用类型时 T=null,而T=0对数值类型有效,结构体却不行,可以使用Default关键字兼容3种,它对引用类型返回空，对值类型的数值型返回零,遇到结构体会根据结构成员的类型返回0或者null
 
 #### 六、泛型的约束（基类约束）
 ``` .cs
@@ -58,8 +58,11 @@ public static void Method<T>(T t) where T : C1,new()
 
 #### 七、泛型的逆变与协变
 
+
+
+
 #### 八、泛型的优点
-1、[由编译过程得出可实现延迟加载](# 九、泛型实现原理及.NetFarmWork编译)</br>
+1、可实现延迟加载,由.net编译过程流程产生</br>
 2、
 #### 九、泛型实现原理及.NetFarmWork编译
 1、vs编译器将C#代码编译为exe或者dll(产生IL和metadata)。</br>
