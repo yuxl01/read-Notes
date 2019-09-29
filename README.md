@@ -15,7 +15,7 @@
 
 
 
-# 视频
+# 课程
 
 *  [.Net](https://github.com/yuxl01/read-Notes/blob/master/vedio/.Net%E9%AB%98%E7%BA%A7.md)
 
