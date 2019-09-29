@@ -11,6 +11,10 @@
 
 *  《深入理解nodejs》
 
+*  《MongoDB权威指南》
+
+*  《汇编语言》
+
 
 
 
@@ -21,7 +25,7 @@
 
 *  [JavaScript(一)](https://github.com/yuxl01/read-Notes/blob/master/vedio/JavaScript.md)
 
-
+*  [Python]
 
 
 
