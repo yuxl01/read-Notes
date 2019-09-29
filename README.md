@@ -3,7 +3,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每个人都有潜力成为一个技术大牛,只是知识点限制了我们的想象力,劝学中说过"不积跬步，无以至千里；不积小流，无以成江海",从现在开始从点滴做起，利用学习去丰富我们的想象力。
 
 # 书籍
-*  《宽容》
+*  [《宽容》](https://github.com/yuxl01/read-Notes/blob/master/book/%E5%AE%BD%E5%AE%B9.md)
 
 *  《Clr Via C#》
 
