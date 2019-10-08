@@ -8,7 +8,7 @@
 4、pdb是调试文件,供vs工具使用。</br>
 
 #### 一、反射的基本使用
-###### 基本使用
+###### 1、基本使用
 ``` .CS
 //加载dll到反射实例(命名空间+类名)1、不存在的dll会报错,2、使用时缺少加载的dll的依赖项也会报错
 Assembly assemly = Assembly.Load("`nameSpace.class`"); 
@@ -31,7 +31,7 @@ object instance = Activator.CreateInstance(type);
 object instance1 = Activator.CreateInstance(type,new object[] { "parmeter"});
 #endregion
 ```
-###### 操作方法`Method`
+###### 2、操作方法`Method`
 ``` .cs
 #region 调用方法
 //加载类型
@@ -58,7 +58,7 @@ MethodInfo methodNew = method.MakeGenericMethod(typeof(int), typeof(string), typ
 methodNew.Invoke(oGeneric, new object[] { 1, "jeck", 0 });
 #endregion
 ``` 
-###### 操作属性 `Property`
+###### 3、操作属性 `Property`
  ``` .cs
  //获取类型
 Type type = typeof(Class);
