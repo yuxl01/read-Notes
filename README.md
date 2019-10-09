@@ -33,4 +33,4 @@
 
 *  [问题及解决方式](https://github.com/yuxl01/read-Notes/blob/master/work/question.md)
 
-* [Git操作和使用]（https://github.com/yuxl01/read-Notes/blob/master/work/question.md）
+* [Git操作和使用](https://github.com/yuxl01/read-Notes/blob/master/work/OperGit.md)
