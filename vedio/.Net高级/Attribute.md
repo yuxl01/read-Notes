@@ -47,9 +47,10 @@
  }
 ```
 
+
 ####  二、特性的使用
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在声明和编译后本身是没用的，由于特性编译后是在metedata里,所以想使用里面的函数，就必须使用到反射。
-###### 1、创建一个特性类
+###### 1、使用特性添加附加信息
 ``` .cs
      /// <summary>
     /// 声明一个权限验证的特性类，特性只能用户枚举和字段，不支持多重修饰，可以继承重写
@@ -66,7 +67,6 @@
 
     }
 ```
-###### 2、创建一个被特性修饰的类
 ``` .cs
     [AuthorityAttribute("用户状态")]
     public enum UserState
@@ -88,26 +88,29 @@
         Deleted = 2
     }
 ```
-
-###### 3、利用反射调用特性
-
 ``` .cs
- class Program
-    {
-        static void Main(string[] args)
-        {
-            //获取枚举类型
-            Type type = typeof(UserState);
-            //获取字段
-            FieldInfo field = type.GetField(UserState.Normal.ToString());
-            //判断字段是否被特性修饰
-            if (field.IsDefined(typeof(AuthorityAttribute), true))
-            {
-                //类型转换
-                AuthorityAttribute remarkAttribute = (AuthorityAttribute)field.GetCustomAttribute(typeof(AuthorityAttribute));
-                Console.WriteLine(remarkAttribute.Description);
-            }         
-        }
-    }
+public  class Program
+ {
+     static void Main(string[] args)
+     {
+         //获取枚举类型
+         Type type = typeof(UserState);
+         //获取字段
+         FieldInfo field = type.GetField(UserState.Normal.ToString());
+         //判断字段是否被特性修饰
+         if (field.IsDefined(typeof(AuthorityAttribute), true))
+         {
+             //类型转换
+             AuthorityAttribute remarkAttribute = (AuthorityAttribute)field.GetCustomAttribute(typeof(AuthorityAttribute));
+             Console.WriteLine(remarkAttribute.Description);
+         }         
+     }
+ }
 ```
+###### 2、使用特性做验证操作
+
+
+
+
+
 
