@@ -29,6 +29,8 @@
             Console.WriteLine($"This is {this.GetType().Name}");
         }
  } 
+ 
+
 ```
 ###### 2、调用特性
 ``` .cs
@@ -39,24 +41,50 @@
      //特性修饰属性
      [CustomAttribute]
      public int Id { get; set; }
+     
+      //修饰返回值
+    [return: CustomAttribute]
+     public int result()
+     {
+     }
   }
 ```
 
 ####  二、特性的使用
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在声明和编译后本身是没用的，由于特性编译后是在metedata里,所以想使用里面的函数，就必须使用到反射。
-
+###### 1、创建一个特性类
 ``` .cs
-//实力一个被特性修饰的类对象
-Test test =new Test();
-//反射获取当前类型
-Type type = test.GetType();
-//检测有没有这个特性
-if (type.IsDefined(typeof(CustomAttribute), true))
-{
-    //找到修饰当前类所有的特性集合
-    object item = type.GetCustomAttributes(typeof(CustomAttribute), true)[0];
-    CustomAttribute attribute = item as CustomAttribute;
-    //调用特性类中的函数
-    attribute.Show();
-}
+    /// <summary>
+    /// 声明一个权限验证的特性类，特性只能用户方法，不支持多重修饰，可以继承重写
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
+    public class AuthorityAttribute : Attribute
+    {
+        public AuthorityAttribute(string description)
+        {
+            this.Description = description;
+        }
+
+        public string Description { get; set; }
+
+        public bool IsPassVaildate()
+        {
+            return true;
+        }
+    }
 ```
+###### 2、创建一个被特性修饰的类
+``` .cs
+    /// <summary>
+    /// 创建一个测试类，用于被特性修饰
+    /// </summary>
+    public class ByDcorate
+    {
+        [Authority("测试一下特性")]
+        public string DoWork()
+        {
+            return "This is DoWork";
+        }
+    }
+```
+
