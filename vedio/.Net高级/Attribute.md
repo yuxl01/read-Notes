@@ -68,6 +68,10 @@
     }
 ```
 ``` .cs
+
+    /// <summary>
+    /// 创建一个被特性修饰的枚举类
+    /// </summary>
     [AuthorityAttribute("用户状态")]
     public enum UserState
     {
@@ -89,6 +93,9 @@
     }
 ```
 ``` .cs
+ /// <summary>
+ /// 利用反射调用
+ /// </summary>
 public  class Program
  {
      static void Main(string[] args)
@@ -109,7 +116,63 @@ public  class Program
 ```
 ###### 2、使用特性做验证操作
 
+``` .cs
+/// <summary>
+/// 创建一个特性验证的抽象基类
+/// </summary>
+[AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
+public abstract class AbstractValidateAttribute : Attribute
+{
+    public abstract bool Validate(object oValue);
+}
 
+/// <summary>
+/// 声明一个长度验证的特性类
+/// </summary>
+public class LongValidateAttribute : AbstractValidateAttribute
+{
+   private long _lMin = 0;
+   private long _lMax = 0;
+   public LongValidateAttribute(long lMin, long lMax)
+   {
+       this._lMin = lMin;
+       this._lMax = lMax;
+   }
+
+   public override bool Validate(object oValue)
+   {
+       return this._lMin < (long)oValue && (long)oValue < this._lMax;
+   }
+}
+
+/// <summary>
+/// 声明实现验证的公共类
+/// </summary>
+public class DataValidate
+ {
+     public static string Validate<T>(T t)
+     {
+         Type type = t.GetType();
+         string result = string.Empty;
+         foreach (var prop in type.GetProperties())
+         {
+             if (prop.IsDefined(typeof(AbstractValidateAttribute), true))
+             {
+                 object item = prop.GetCustomAttributes(typeof(AbstractValidateAttribute), true)[0];
+                 AbstractValidateAttribute attribute = item as AbstractValidateAttribute;
+                 if (!attribute.Validate(prop.GetValue(t)))
+                 {
+                     result = "当前"+prop.Name+"值未通过验证";
+                     break;
+                 }
+             }
+         }
+         return result;
+     }
+ }
+ //调用T为被特性修饰的类
+DataValidate.Validate<Student>(new T(){});
+```
 
 
 
