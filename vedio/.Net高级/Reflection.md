@@ -42,6 +42,11 @@ object oTest = Activator.CreateInstance(testType);
 MethodInfo method = testType.GetMethod("methods",new Type[] {"typeof(int)函数参数类型，有重载的情况" });
 //调用函数
 method.Invoke(oTest, null);
+//获取方法参数
+method.GetParameters()
+//获取方法返回值
+method.ReturnParameter
+
 
 //调用私有方法,其实没啥意义
 MethodInfo method = testType.GetMethod("method4", BindingFlags.Instance | BindingFlags.NonPublic);
