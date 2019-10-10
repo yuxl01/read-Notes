@@ -12,42 +12,37 @@
 ###### 1、声明特性类
 ``` .cs
 
- //【AttributeUsage特性修饰使用的特性】
- //第一个参数是表明当前特性能修饰的对象类型，枚举类 ，属性，字段（有16个可以被修饰的枚举对象）
- //第二个参数表示是否被多重修饰，一般很少用少用
- //第三个参数表示是否可以被继承和重写
+/// <summary>
+///【AttributeUsage特性修饰使用的特性】
+/// 1、第一个参数是表明当前特性能修饰的对象类型，枚举类 ，属性，字段（有16个可以被修饰的枚举对象）
+/// 2、第二个参数表示是否被多重修饰，一般很少用少用
+/// 3、第三个参数表示是否可以被继承和重写
+/// </summary>
+
  [AttributeUsage(AttributeTargets.All, AllowMultiple = false, Inherited = true)]
  public class CustomAttribute : Attribute
  {
-        public CustomAttribute(string remark)
-        {
-            Console.WriteLine("这里是CustomAttribute带参数");
-        }
-        public string Description { get; set; }
-        public void Show()
-        {
-            Console.WriteLine($"This is {this.GetType().Name}");
-        }
  } 
- 
 
 ```
-###### 2、调用特性
+###### 2、常见的特性修饰
 ``` .cs
- //调用特性修饰类
-  [CustomAttribute("测试特性", Description = "给特性属性赋值"])
-  public class Test
-  {
+
+  //特性修饰类
+ [CustomAttribute]
+ public class Test
+ {
      //特性修饰属性
      [CustomAttribute]
      public int Id { get; set; }
-     
-      //修饰返回值
-    [return: CustomAttribute]
-     public int result()
+
+     //修饰方法返回值
+     [return: CustomAttribute]
+     public int result([CustomAttribute] string str) //修饰参数
      {
+         return 0;
      }
-  }
+ }
 ```
 
 ####  二、特性的使用
