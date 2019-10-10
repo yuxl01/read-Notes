@@ -83,3 +83,30 @@
     }
 ```
 
+###### 3、利用反射调用特性
+
+``` .cs
+//用户获取类型
+1、typeof(ByDcorate);
+//获取类对象的类型
+2、new Class().GetType() 
+static void Main(string[] args)
+ {
+     //获取类型
+     Type type = typeof(ByDcorate);
+     //找到对应的方法
+     MethodInfo method = type.GetMethod("DoWork");
+
+     //判断当前反射的类中的函数是否存在被AuthorityAttribute特性修饰
+     if (method.IsDefined(typeof(AuthorityAttribute), true))
+     {
+         //找到方法上的特性
+         object item = method.GetCustomAttribute(typeof(AuthorityAttribute));
+         //类型转换
+         AuthorityAttribute aity = item as AuthorityAttribute;
+         //调用特性的属性
+         Console.WriteLine(aity.Description);
+     }
+ }
+```
+
