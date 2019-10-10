@@ -146,6 +146,16 @@ public class LongValidateAttribute : AbstractValidateAttribute
 }
 
 /// <summary>
+/// 声明一个检验值不能为空的特性类
+/// </summary>
+public class RequirdValidateAttribute : AbstractValidateAttribute
+{
+   public override bool Validate(object oValue)
+   {
+       return oValue != null ;
+   }
+}
+/// <summary>
 /// 声明实现验证的公共类
 /// </summary>
 public class DataValidate
