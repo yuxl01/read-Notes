@@ -4,6 +4,8 @@
 1、特性可以影响编译器。</br>
 2、特性可以影响程序运行。</br>
 3、特性是生成metadata的在里面可以看到。</br>
+4、特性本身没有作用，必须要框架支持（反射调用）</br>
+5、使用特性实现AOP</br>
 
 
 ####  一、特性的声明和基本方法
@@ -49,10 +51,10 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在声明和编译后本身是没用的，由于特性编译后是在metedata里,所以想使用里面的函数，就必须使用到反射。
 ###### 1、创建一个特性类
 ``` .cs
-    /// <summary>
-    /// 声明一个权限验证的特性类，特性只能用户方法，不支持多重修饰，可以继承重写
+     /// <summary>
+    /// 声明一个权限验证的特性类，特性只能用户枚举和字段，不支持多重修饰，可以继承重写
     /// </summary>
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
+    [AttributeUsage(AttributeTargets.Enum |AttributeTargets.Field, AllowMultiple = false, Inherited = true)]
     public class AuthorityAttribute : Attribute
     {
         public AuthorityAttribute(string description)
@@ -60,53 +62,52 @@
             this.Description = description;
         }
 
-        public string Description { get; set; }
+        public string Description { get; private set; }
 
-        public bool IsPassVaildate()
-        {
-            return true;
-        }
     }
 ```
 ###### 2、创建一个被特性修饰的类
 ``` .cs
-    /// <summary>
-    /// 创建一个测试类，用于被特性修饰
-    /// </summary>
-    public class ByDcorate
+    [AuthorityAttribute("用户状态")]
+    public enum UserState
     {
-        [Authority("测试一下特性")]
-        public string DoWork()
-        {
-            return "This is DoWork";
-        }
+        /// <summary>
+        /// 正常
+        /// </summary>
+        [AuthorityAttribute("正常")]
+        Normal = 0,
+        /// <summary>
+        /// 冻结
+        /// </summary>
+        [AuthorityAttribute("冻结")]
+        Frozen = 1,
+        /// <summary>
+        /// 删除
+        /// </summary>
+        [AuthorityAttribute("删除")]
+        Deleted = 2
     }
 ```
 
 ###### 3、利用反射调用特性
 
 ``` .cs
-//用户获取类型
-1、typeof(ByDcorate);
-//获取类对象的类型
-2、new Class().GetType() 
-static void Main(string[] args)
- {
-     //获取类型
-     Type type = typeof(ByDcorate);
-     //找到对应的方法
-     MethodInfo method = type.GetMethod("DoWork");
-
-     //判断当前反射的类中的函数是否存在被AuthorityAttribute特性修饰
-     if (method.IsDefined(typeof(AuthorityAttribute), true))
-     {
-         //找到方法上的特性
-         object item = method.GetCustomAttribute(typeof(AuthorityAttribute));
-         //类型转换
-         AuthorityAttribute aity = item as AuthorityAttribute;
-         //调用特性的属性
-         Console.WriteLine(aity.Description);
-     }
- }
+ class Program
+    {
+        static void Main(string[] args)
+        {
+            //获取枚举类型
+            Type type = typeof(UserState);
+            //获取字段
+            FieldInfo field = type.GetField(UserState.Normal.ToString());
+            //判断字段是否被特性修饰
+            if (field.IsDefined(typeof(AuthorityAttribute), true))
+            {
+                //类型转换
+                AuthorityAttribute remarkAttribute = (AuthorityAttribute)field.GetCustomAttribute(typeof(AuthorityAttribute));
+                Console.WriteLine(remarkAttribute.Description);
+            }         
+        }
+    }
 ```
 
