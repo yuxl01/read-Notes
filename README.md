@@ -1,6 +1,7 @@
 # read-Notes 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"不积跬步，无以至千里；不积小流，无以成江海",从点滴做起，利用学习通过知识去丰富我们的想象力。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When you onto the moon even if you don't,you also will fall among the stars</br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;争取摘到月亮，因为即使你坠落也会在群星之间。
 
 # 书籍
 *  [《宽容》](https://github.com/yuxl01/read-Notes/blob/master/book/%E5%AE%BD%E5%AE%B9.md)
