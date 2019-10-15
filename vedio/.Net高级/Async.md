@@ -98,4 +98,4 @@ iAsyncResult.AsyncWaitHandle.WaitOne(3000);
  
  ```
 
-# Async And Thread (二)
+
