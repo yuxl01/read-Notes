@@ -34,9 +34,10 @@ act.BeginInvoke("测试委托异步调用",null,null);
     
 #### 四、异步的回调和状态参数以及异步等待
     常见的委托异步等待方式：
-                          1、callback and AsyncState
-                          2、监控状态执行等待
-                          3、EndInvoke
+    
+    1、callback and AsyncState
+    2、监控状态执行等待
+    3、EndInvoke
     
 ###### `1、callback and AsyncState `
     1.1：永远都是异步之后执行回调，因为委托异步执行会开启一个线程，等线程执行完委托之后,该线程会再去执行回调
