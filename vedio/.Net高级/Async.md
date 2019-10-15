@@ -32,8 +32,56 @@ act.BeginInvoke("测试委托异步调用",null,null);
     3、多线程的资源消耗更多，线程并不是越多越好(资源有限/管理线程也消耗资源)
     4、异步多线程是无序的，启动无序，执行时间不确定，结束无序
     
-#### 四、异步的回调和状态参数
+#### 四、异步的回调和状态参数以及异步等待
+    常见的委托异步等待方式：
+                          1、callback
+                          2、监控状态执行等待
+                          3、EndInvoke
+    
+###### `1、callback and AsyncState `
+    永远都是异步之后执行回调，因为委托异步执行会开启一个线程，等线程执行完委托之后,该线程会再去执行回调
+    说明执行委托和回调的从开始到结束是由一个线程完成
+      
+```.cs
+Action<string> act =t=> Console.WriteLine(t);
 
-#### 五、异步等待三种方式
+//声明一个回调
+AsyncCallback acbak = ab =>
+{
+    //异步操作信息
+    string str = ab.AsyncState.ToString();
+    Console.WriteLine(str);
+};
 
-#### 六、异步返回值
+//异步调用完成之后执行回调
+act.BeginInvoke("测试委托异步调用", acbak, "回调参数");
+
+```
+###### `2、IsCompleted and IAsyncResult.AsyncWaitHandle.WaitOne()` 
+       
+    1、IsCompleted状态参数，利用主线程等待，会卡界面，可以输出一些内容边等待边做提示，有误差。
+      
+      
+``` .cs
+ //异步执行委托
+IAsyncResult iAsyncResult = act.BeginInvoke("测试委托异步调用", null, null);
+//监控是否执行完成的状态
+while (!iAsyncResult.IsCompleted)
+{
+    Thread.Sleep(200);
+}
+```
+    2、WaitOne没有误差，等待任务完成，第一时间执行后续程序，但是不能做额外的操作，只是单纯等待异步完成。
+```.cs
+  //一直等待任务完成，第一时间进入下一行
+  iAsyncResult.AsyncWaitHandle.WaitOne();
+  iAsyncResult.AsyncWaitHandle.WaitOne(-1);
+  
+  //最多等待3s，否则就进入下一行，可以做一些超时控制
+  iAsyncResult.AsyncWaitHandle.WaitOne(3000);
+  
+```
+
+#### 五、异步返回值
+
+
