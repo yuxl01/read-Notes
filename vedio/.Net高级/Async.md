@@ -34,7 +34,7 @@ act.BeginInvoke("测试委托异步调用",null,null);
     
 #### 四、异步的回调和状态参数以及异步等待
     常见的委托异步等待方式：
-                          1、callback
+                          1、callback and AsyncState
                           2、监控状态执行等待
                           3、EndInvoke
     
@@ -73,12 +73,12 @@ while (!iAsyncResult.IsCompleted)
 ```
     2、WaitOne没有误差，等待任务完成，第一时间执行后续程序，但是不能做额外的操作，只是单纯等待异步完成。
 ```.cs
-  //一直等待任务完成，第一时间进入下一行
-  iAsyncResult.AsyncWaitHandle.WaitOne();
-  iAsyncResult.AsyncWaitHandle.WaitOne(-1);
-  
-  //最多等待3s，否则就进入下一行，可以做一些超时控制
-  iAsyncResult.AsyncWaitHandle.WaitOne(3000);
+//一直等待任务完成，第一时间进入下一行
+iAsyncResult.AsyncWaitHandle.WaitOne();
+iAsyncResult.AsyncWaitHandle.WaitOne(-1);
+
+//最多等待3s，否则就进入下一行，可以做一些超时控制
+iAsyncResult.AsyncWaitHandle.WaitOne(3000);
   
 ```
 
