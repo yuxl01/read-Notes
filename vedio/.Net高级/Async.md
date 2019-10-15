@@ -82,7 +82,7 @@ iAsyncResult.AsyncWaitHandle.WaitOne(3000);
   
 ```
 ###### `3、EndInvoke` 
-    3.1：可以实现等待，和获取返回值
+    3.1：可以实现等待，和获取返回值,但对于每个异步操作，只能调用一次 EndInvoke。
  ``` .cs
  //声明一个传入int参数返回string的委托
  Func<int, string> func = i => i.ToString();
@@ -97,4 +97,4 @@ iAsyncResult.AsyncWaitHandle.WaitOne(3000);
  
  ```
 
-
+# Async And Thread (二)
