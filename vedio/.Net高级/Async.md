@@ -39,7 +39,7 @@ act.BeginInvoke("测试委托异步调用",null,null);
                           3、EndInvoke
     
 ###### `1、callback and AsyncState `
-    1.1、永远都是异步之后执行回调，因为委托异步执行会开启一个线程，等线程执行完委托之后,该线程会再去执行回调
+    1.1：永远都是异步之后执行回调，因为委托异步执行会开启一个线程，等线程执行完委托之后,该线程会再去执行回调
     说明执行委托和回调的从开始到结束是由一个线程完成
       
 ```.cs
@@ -59,7 +59,7 @@ act.BeginInvoke("测试委托异步调用", acbak, "回调参数");
 ```
 ###### `2、IsCompleted and IAsyncResult.AsyncWaitHandle.WaitOne()` 
        
-    2.1、IsCompleted状态参数，利用主线程等待，会卡界面，可以输出一些内容边等待边做提示，有误差。
+    2.1：IsCompleted状态参数，利用主线程等待，会卡界面，可以输出一些内容边等待边做提示，有误差。
       
       
 ``` .cs
@@ -71,7 +71,7 @@ while (!iAsyncResult.IsCompleted)
     Thread.Sleep(200);
 }
 ```
-    2.2、WaitOne没有误差，等待任务完成，第一时间执行后续程序，但是不能做额外的操作，只是单纯等待异步完成。
+    2.2：WaitOne没有误差，等待任务完成，第一时间执行后续程序，但是不能做额外的操作，只是单纯等待异步完成。
 ```.cs
 //一直等待任务完成，第一时间进入下一行
 iAsyncResult.AsyncWaitHandle.WaitOne();
@@ -81,7 +81,20 @@ iAsyncResult.AsyncWaitHandle.WaitOne(-1);
 iAsyncResult.AsyncWaitHandle.WaitOne(3000);
   
 ```
-
-#### 五、异步返回值
+###### `3、EndInvoke` 
+    3.1：可以实现等待，和获取返回值
+ ``` .cs
+ //声明一个传入int参数返回string的委托
+ Func<int, string> func = i => i.ToString();
+ 
+ func.BeginInvoke(DateTime.Now.Year,new AsyncCallback(ar=> 
+ {
+    //在回调中获取使用异步的返回结果
+    string result = func.EndInvoke(ar);
+    Console.WriteLine($"{ar.AsyncState} 的异步调用结果 {result}");
+ }),"异步回调的参数");
+ 
+ 
+ ```
 
 
