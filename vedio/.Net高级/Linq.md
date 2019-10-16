@@ -102,6 +102,7 @@ var result = list.Where(t=>t>3);
 
 ```
  `2、加入IEnumerable和Yield之后实现的lambda(迭代器) `
+        
         yield:是一个状态机,可以理解为只是记录整个操作,并没有及时计算，实现延迟获取，用到的时候才去查询。
 
 ``` .cs
