@@ -72,8 +72,9 @@ public static class ExtendMethod
     2、this修饰的类型如果权限过大,其子类都能使用整个方法,如扩展方法参数修饰为object,最终影响代码可读性。
     3、不要对基础类型进行扩展。
 
-#### 三、linq to object(委托扩展方法实现封装Lambda表达式)
-###### `1、linq to object的定义`
+#### 三、linq to object
+
+###### `1、linq to object的定义(查询表达式)`
         继承自IEnumable接口,所有的操作都在内存中，可以说速度是很快的。
 
 ###### `2、简单实现lambda的小栗子`
@@ -128,4 +129,17 @@ var result = list.Where(t=>t>3);
 foreach(var i in result){}
 ```
 
-#### 四、linq to sql
+###### `4、linq to Object (查询运算符)`
+``` .cs
+ List<int> list = new List<int>(){1,2,3,4,5,6,7,8};
+ //查找list中大于3的数字
+ var list = from s in list where s>3 select s;
+ 
+ //查找list中大于3的数字投影到一个新的匿名类型中
+ var list = from s in list where s>3 select new{
+       a = s+1,
+       b = s+2
+ };
+ 
+
+```
