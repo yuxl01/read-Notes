@@ -78,14 +78,9 @@ public static class ExtendMethod
 
 ###### `2、简单实现lambda的小栗子`
 ``` .cs
- public static class ExtendMethod
+public static class ExtendMethod
 {
-    /// <summary>
-    /// 实现list Where的lambda表达式
-    /// </summary>
-    /// <param name="list">数据源</param>
-    /// <param name="predicate">委托执行的方法(筛选的方法)</param>
-    /// <returns>返回筛选后的集合</returns>
+    // 实现list Where的lambda表达式
     public static List<int> Where(this List<int> list, Func<int, bool> predicate)
     {
         List<int> result = new List<int>();
@@ -109,6 +104,8 @@ var result = list.Where(t=>t>3);
         yield:是一个状态机,可以理解为只是记录整个操作,并没有及时计算，实现延迟获取，用到的时候才去查询。
 
 ``` .cs
+
+// 实现list结合IEnumerable和yield Where的lambda表达式
 public static IEnumerable<T> Where<T>(this IEnumerable<T> tList, Func<T, bool> predicate)
 {
     if (tList == null || predicate == null)
