@@ -37,7 +37,7 @@ Action act1 = new Action(delegate ()
 ```
 
 
-#### 二、利用扩展方法和委托实现Lambda 表达式
+#### 二、扩展方法
 ###### ```1、扩展方法的定义:```
       
       扩展方法是C#3.0时引入的新特性，最常见的是在LINQ中的使用，扩展方法是一种特殊类型的静态方法
@@ -72,5 +72,63 @@ public static class ExtendMethod
     2、this修饰的类型如果权限过大,其子类都能使用整个方法,如扩展方法参数修饰为object,最终影响代码可读性。
     3、不要对基础类型进行扩展。
 
-#### 三、linq to object  
+#### 三、linq to object(委托扩展方法实现封装Lambda表达式)
+###### `1、linq to object的定义`
+        继承自IEnumable接口,所有的操作都在内存中，可以说速度是很快的。
+
+###### `2、简单实现lambda的小栗子`
+``` .cs
+ public static class ExtendMethod
+{
+    /// <summary>
+    /// 实现list Where的lambda表达式
+    /// </summary>
+    /// <param name="list">数据源</param>
+    /// <param name="predicate">委托执行的方法(筛选的方法)</param>
+    /// <returns>返回筛选后的集合</returns>
+    public static List<int> Where(this List<int> list, Func<int, bool> predicate)
+    {
+        List<int> result = new List<int>();
+        foreach (var item in list)
+        {
+            if (predicate.Invoke(item))
+            {
+                result.Add(item);
+            }
+        }
+        return list;
+    }
+}
+List<int> list = new List<int>(){1,2,3,4,5,6,7,8};
+//调用，已经得到结果
+var result = list.Where(t=>t>3);
+//输出4，5，6，7，8
+
+```
+###### `3、加入IEnumerable和Yield之后实现的lambda(迭代器) `
+        yield:是一个状态机,可以理解为只是记录整个操作,并没有及时计算，实现延迟获取，用到的时候才去查询。
+
+``` .cs
+public static IEnumerable<T> Where<T>(this IEnumerable<T> tList, Func<T, bool> predicate)
+{
+    if (tList == null || predicate == null)
+    {
+        throw new Exception("can't be null");
+    }
+    foreach (var item in tList)
+    {    
+        if (predicate.Invoke(item))
+        {
+            yield return item;
+        }
+    }
+}
+
+List<int> list = new List<int>(){1,2,3,4,5,6,7,8};
+//因为有了yield return 调用时候并没有计算出结果，如果想直接得到结果可以ToList转换一下。
+var result = list.Where(t=>t>3);
+//用的时候才回去执行计算
+foreach(var i in result){}
+```
+
 #### 四、linq to sql
