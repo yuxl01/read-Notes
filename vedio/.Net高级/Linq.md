@@ -1,4 +1,4 @@
-# Linq to Sql And Linq to Object
+# Linq to Object
 
 #### 一、匿名类，匿名方法
 
