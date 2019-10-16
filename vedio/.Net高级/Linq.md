@@ -72,12 +72,12 @@ public static class ExtendMethod
     2、this修饰的类型如果权限过大,其子类都能使用整个方法,如扩展方法参数修饰为object,最终影响代码可读性。
     3、不要对基础类型进行扩展。
 
-#### 三、linq to object
+#### 三、Linq to Object
 
-###### `1、linq to object的定义(查询表达式)`
-        继承自IEnumable接口,所有的操作都在内存中，可以说速度是很快的。
-
-###### `2、简单实现lambda的小栗子`
+        继承自IEnumable接口,所有的操作都是已经在内存中的数据，可以说速度是很快的。
+        
+###### `一、linq to object(查询表达式)`    
+ `1、简单实现lambda的小栗子`
 ``` .cs
 public static class ExtendMethod
 {
@@ -101,7 +101,7 @@ var result = list.Where(t=>t>3);
 //输出4，5，6，7，8
 
 ```
-###### `3、加入IEnumerable和Yield之后实现的lambda(迭代器) `
+ `2、加入IEnumerable和Yield之后实现的lambda(迭代器) `
         yield:是一个状态机,可以理解为只是记录整个操作,并没有及时计算，实现延迟获取，用到的时候才去查询。
 
 ``` .cs
@@ -129,7 +129,7 @@ var result = list.Where(t=>t>3);
 foreach(var i in result){}
 ```
 
-###### `4、linq to Object (查询运算符)`
+###### `二、linq to Object (查询运算符)`
 ``` .cs
  List<int> list = new List<int>(){1,2,3,4,5,6,7,8};
  //查找list中大于3的数字
