@@ -43,8 +43,49 @@ thread.Start();
     4、thread.Abort();
     //设置当前线程为后台线程，默认为前台线程
     thread.IsBackground = true;
+    //获取线程执行状态
+    thread.ThreadState
+##### `4、基于Thread封装的回调`
+``` .cs
+ /// <summary>
+ /// 基于Thread封装支持回调
+ /// BeginInvoke的回调
+ /// </summary>
+ /// <param name="threadStart"></param>
+ /// <param name="callback"></param>
+ private void ThreadWithCallback(ThreadStart threadStart, Action callback)
+ {
+     //封装被线程执行的方法，在执行回调
+     ThreadStart startNew = new ThreadStart(
+         () =>
+         {
+             threadStart();
+             callback.Invoke();
+         });
+      //给线程执行
+     Thread thread = new Thread(startNew);
+     thread.Start();
+ }
+ 
+ //代返回值的
+private Func<T> ThreadWithReturn<T>(Func<T> funcT)
+{
+    T t = default(T);
+    ThreadStart startNew = new ThreadStart(
+        () =>
+        {
+            t = funcT.Invoke();
+        });
+    Thread thread = new Thread(startNew);
+    thread.Start();
 
-
+    return new Func<T>(() =>
+    {
+        thread.Join();
+        return t;
+    });
+}
+```
 #### 二、线程池(ThreadPool)
 ##### `1、线程池使用`
 ##### `2、设置线程池`
