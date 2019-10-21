@@ -86,7 +86,7 @@ public class delegateTest
 
 }
  ```
- 
+ ![原型图片](https://github.com/yuxl01/read-Notes/blob/master/imag/delegate-1.png)
 
 
 ### 四、事件和观察者模式
