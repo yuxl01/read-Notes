@@ -88,5 +88,6 @@ public class delegateTest
  ```
  ![原型图片](https://github.com/yuxl01/read-Notes/blob/master/imag/delegate-1.png)
 
+###### `5、用委托回调多个方法（委托链了解一下）`
 
 ### 四、事件和观察者模式
