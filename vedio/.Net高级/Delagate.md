@@ -2,10 +2,46 @@
 
 
 
-#### 一、委托的声明，实例化以及调用
+### 一、委托的定义，声明，实例化以及调用
+######  `1、我自己比较容易理解的定义`
+    1、将方法当做参数传递，但类型是安全的。
+    
+######  `2、声明、实例化、调用`   
+``` .cs
+//声明一个带参数无返回值的委托
+public delegate void DelegateNoReturn(int param);
+//实例化一个委托
+DelegateNoReturn dnr = new DelegateNoReturn(t =>
+{
+    Console.WriteLine(t);
+});
 
-#### 二、泛型委托Action,Func
+//声明一个带参数带返回值的委托
+public delegate int DelegateReturnAndParam(int param);
+//实例化一个委托
+DelegateReturnAndParam drap = new DelegateReturnAndParam(t =>
+{
+    return 1;
+});
 
-#### 三、委托的意义
+//声明一个无参数带返回值的委托
+public delegate int DelegateNoParam();
+//实例化一个委托
+DelegateNoParam dnp = new DelegateNoParam(() =>
+{
+    return 1;
+});
 
-#### 四、事件和观察者模式
+//调用
+static void Main(string[] args)
+{
+    new Program().dnr(5);
+    new Program().drap(5);
+    new Program().dnp();
+}
+```
+### 二、泛型委托Action,Func
+
+### 三、委托的意义
+
+### 四、事件和观察者模式
