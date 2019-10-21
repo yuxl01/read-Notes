@@ -46,7 +46,7 @@ static void Main(string[] args)
  ![原型图片]( https://github.com/yuxl01/read-Notes/blob/master/imag/Action.png)
    
     1：Action用于没有返回值的方法（参数可以根据自己情况进行传递）
-    2：Func恰恰相反用于有返回值的方法（同样参数根据自己情况情况）
+    2：Func用于有返回值的方法（同样参数视情况而定）
    
 
 ### 三、委托的本质
