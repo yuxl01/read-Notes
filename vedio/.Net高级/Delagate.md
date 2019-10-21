@@ -43,10 +43,11 @@ static void Main(string[] args)
 ### 二、泛型委托Action,Func
 ###### `1、什么是泛型委托？`
     A: 最终就是一个基于Delagate和泛型结合的封装而已。
-    
+ ![原型图片]( https://github.com/yuxl01/read-Notes/blob/master/imag/Action.png)
+   
     1：Action用于没有返回值的方法（参数可以根据自己情况进行传递）
     2：Func恰恰相反用于有返回值的方法（同样参数根据自己情况情况）
-    3：记住无返回就用action，有返回就用Func
+   
 
 ### 三、委托的意义
 
