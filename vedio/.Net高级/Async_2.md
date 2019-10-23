@@ -92,9 +92,3 @@ private Func<T> ThreadWithReturn<T>(Func<T> funcT)
 ##### `3、ManualResetEvent`
 
 
-#### 三、任务(Task)
-##### `1、task定义`
-##### `2、task基本使用`
-##### `3、task的常用API`
-
-#### 四、并行(Parallel)
