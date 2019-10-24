@@ -74,6 +74,7 @@
   
   //返回true
   null==undefined
-  
+  //返回false
+  NaN==undefined
 ```  
      
