@@ -3,6 +3,7 @@
       typeof(param):判断输入param的类型,结果值情况：返回字符串描述的数据类型
 
 ### 一、显示类型转换
+
 ###### `1、Number(param)`
    
       Number(param)转换数字,可以转换bool,字符串数字,null(转换为0),undefine转换为NaN.
@@ -30,5 +31,47 @@
    console.log(result);
    //输出结果 c
 ```  
+
+### 二、隐式类型转换      
+
+###### `1、isNaN()/+ - (正负)`
+      1、内部隐式调用Number(),返回bool
       
+ ```.js
+  //返回false
+  isNaN('123') 
+  //返回true
+  isNaN('a') 
+  //返回false
+  isNaN(null) 
+  //返回true
+  isNaN(undefined)
+  
+  //a变为number类型
+  var a =+'b';
+  typeof(a)
+  
+```  
+
+###### `2、特殊的转换`
       
+      1、==会发生类型转换.
+      2、===绝对比较不会发生转换.
+      3、NaN不管是否有类型转换都为false.
+      4、变量未声明,只有当typeof()使用时才不会报错。
+ ```.js
+  //返回false
+  undefined>0
+  undefined<0
+  undefined==0
+  
+  //返回false
+  null>0
+  null<0
+  null==0
+  
+  //返回true
+  null==undefined
+  
+```  
+     
