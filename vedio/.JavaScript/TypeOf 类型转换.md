@@ -3,10 +3,10 @@
       typeof(param):判断输入param的类型,结果值情况：返回字符串描述的数据类型
 
 ### 一、显示类型转换
-######  1、Number(param)
+###### `1、Number(param)`
    
       Number(param)转换数字,可以转换bool,字符串数字,null(转换为0),undefine转换为NaN.
-######  2、parseInt(param,radix)
+###### `2、parseInt(param,radix)`
       1、parseInt(param,radix)转换字符串数字,浮点型为整型，其他的为NaN.
       2、从数字位开始看识别到非数字结束,100px取100可以用parseInt('100px').
       3、第二个参数以目标数字为基底转化为10进制.
@@ -18,7 +18,7 @@
    console.log(result);
    //输出结果 2
 ```
-######  3、String(param)和toString(radix)
+###### `3、String(param)和toString(radix)`
       1、String(param)转换任何类型为字符串，包括null和undefine.
       2、toString()也可以转换为字符串，类似c#中的扩展方法 str.toString(),但是null和undefine使用会报错。
       3、toString()带参数的就会将字符串以10进制转换为目标进制     
