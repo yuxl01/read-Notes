@@ -7,7 +7,7 @@
    
   
   - ####  [TypeOf类型转换](https://github.com/yuxl01/read-Notes/blob/master/vedio/.JavaScript/TypeOf%20%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.md)
-- #### 函数作用域(上)
+- #### [函数作用域(上)](/.JavaScript/函数作用域(上).md)
 - #### 函数作用域 (下)
 - #### 预编译 (上)
 - #### 预编译（下）
