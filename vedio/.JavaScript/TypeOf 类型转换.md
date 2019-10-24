@@ -59,6 +59,8 @@
       2、===绝对比较不会发生转换.
       3、NaN不管是否有类型转换都为false.
       4、变量未声明,只有当typeof()使用时才不会报错。
+      5、typeof(undefined)返回'undefined',typeof(typeof(undefined))返回string。
+      
  ```.js
   //返回false
   undefined>0
