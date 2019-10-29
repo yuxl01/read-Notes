@@ -67,7 +67,7 @@ thread.Start();
      thread.Start();
  }
  
- //代返回值的
+ //带返回值的
 private Func<T> ThreadWithReturn<T>(Func<T> funcT)
 {
     T t = default(T);
@@ -88,7 +88,41 @@ private Func<T> ThreadWithReturn<T>(Func<T> funcT)
 ```
 #### 二、线程池(ThreadPool)
 ##### `1、线程池使用`
+      1、去掉了各种api.
+      2、避免滥用，降低复杂度.
+      3、池化减少创建/销毁的成本.
+      4、限制最大线程数量.
+      
+ ``` .cs
+ //启动一个线程池
+ThreadPool.QueueUserWorkItem(new WaitCallback(t =>
+{
+    new Action(() =>
+    {
+     //执行的逻辑
+    }).Invoke();
+    //执行的回调
+}));
+ ```
 ##### `2、设置线程池`
+      1、设置最大线程数ThreadPool.SetMaxThreads()
+      2、设置最小线程数ThreadPool.SetMinThreads();
+      3、获取最大线程ThreadPool.GetMaxThreads();
+      4、获取最小线程数ThreadPool.GetMinThreads();
+      5、返回最大线程数和当前线程的差值ThreadPool.GetAvailableThreads();
+      
 ##### `3、ManualResetEvent`
+      
+      通知一个或多个正在等待的线程已发生事件，允许线程通过发信号互相通信，来控制线程是否可以访问资源。
+``` .cs
+ManualResetEvent mre = new ManualResetEvent(false);
+ThreadPool.QueueUserWorkItem(o =>
+{
+    Thread.Sleep(5000);
+    //使用信号量释放通知主线程执行
+    mre.Set();
+}, "backbone");
 
-
+//主线程执行到这里等待
+mre.WaitOne();
+```
