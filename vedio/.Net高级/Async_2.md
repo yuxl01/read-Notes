@@ -87,6 +87,7 @@ private Func<T> ThreadWithReturn<T>(Func<T> funcT)
 }
 ```
 #### 二、线程池(ThreadPool)
+      ThreadPool 是在FarmWork2.0诞生的Thread的进一步封装。
 ##### `1、线程池使用`
       1、去掉了各种api.
       2、避免滥用，降低复杂度.
