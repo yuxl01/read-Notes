@@ -93,7 +93,8 @@ private Func<T> ThreadWithReturn<T>(Func<T> funcT)
       2、避免滥用，降低复杂度.
       3、池化减少创建/销毁的成本.
       4、限制最大线程数量.
-      
+      5、ThreadPool不支持线程的取消、完成、失败通知等交互性操作.
+      6、ThreadPool不支持线程执行的先后次序.
  ``` .cs
  //启动一个线程池
 ThreadPool.QueueUserWorkItem(new WaitCallback(t =>
