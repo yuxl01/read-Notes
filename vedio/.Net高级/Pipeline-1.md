@@ -17,5 +17,5 @@
 5、如果MVC请求没有后缀，IIS6会为没有后缀的加一个默认的.axd后缀，IIS 7之后就不用了,可以直接映射到HttpRoutingModules。
 
 #### 四、流程图
-![原型图片](./imag/pipeline-1-1.png)
+![原型图片](imag/pipeline-1-1.png)
 
