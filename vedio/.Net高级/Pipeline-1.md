@@ -17,6 +17,7 @@
     5、如果MVC请求没有后缀，IIS6会为没有后缀的加一个默认的.axd后缀，IIS7之后就不用了,可以直接映射到HttpRoutingModules。
 
 #### 四、流程图和后续
+
 ![原型图片](https://github.com/yuxl01/read-Notes/blob/master/imag/pipeline-1-1.png)
      
     6、当aspnet.isapi接收到http请求会将转换为HttpWorkRequest对象然后传入HttpRuntime(程序入口)
