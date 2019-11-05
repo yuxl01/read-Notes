@@ -10,12 +10,14 @@
 1、对用户请求Url到达服务器的过程生命周期流程的支撑。
 
 ##### 三、Pipeline的请求流程在IIS中如何体现的?
-1、用户发起请求到达DNS,DNS会解析域名找到对应的IP及端口。</br>
-2、IIS中HttpSys监听服务接受请求。</br>
-3、HttpSys监听服务根据请求类型的后缀,将请求转发到对应的应用程序处理(isapi.dll),IIS中处理程序映射可以实现配置。</br>
-4、不同的后缀将到达不同的处理程序.net的请求映射到aspnet.isapi,java或者其他的也可以配置对应的dll。</br>
-5、如果MVC请求没有后缀，IIS6会为没有后缀的加一个默认的.axd后缀，IIS 7之后就不用了,可以直接映射到HttpRoutingModules。
+    1、用户发起请求到达DNS,DNS会解析域名找到对应的IP及端口。
+    2、IIS中HttpSys监听服务接受请求。
+    3、HttpSys监听服务根据请求类型的后缀,将请求转发到对应的应用程序处理(isapi.dll),IIS中处理程序映射可以实现配置。
+    4、不同的后缀将到达不同的处理程序.net的请求映射到aspnet.isapi,java或者其他的也可以配置对应的dll。
+    5、如果MVC请求没有后缀，IIS6会为没有后缀的加一个默认的.axd后缀，IIS7之后就不用了,可以直接映射到HttpRoutingModules。
 
-#### 四、流程图
+#### 四、流程图和后续
 ![原型图片](https://github.com/yuxl01/read-Notes/blob/master/imag/pipeline-1-1.png)
-
+     
+    6、当aspnet.isapi接收到http请求会将转换为HttpWorkRequest对象然后传入HttpRuntime(程序入口)
+ 
