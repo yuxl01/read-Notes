@@ -26,6 +26,12 @@
                                               
      C#6.0	  .NET Framework 4.6	    CLR4.0	      Visual Studio 2015
      C#7.0			                              Visual Studio 2017
+     
+`三、包含的框架`
+     
+     1、wpf
+     1、woindwsform
+     1、asp.net
 
 ### .NetCore
   `为了跨平台，由于framwork向前兼容过于累赘，跨平台成本较高，Core是一套全新的CLR，同时支持windows以及linux`
