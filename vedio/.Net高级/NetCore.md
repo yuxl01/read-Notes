@@ -130,3 +130,14 @@
 ```
 ### .NetCore
   `为了跨平台，由于framwork向前兼容过于累赘，跨平台成本较高，Core是一套全新的CLR，同时支持windows以及linux`
+  
+###### 一、Asp.netCore 和Asp.Net
+   ##### `KestrelServer 跨平台的服务器`
+    1、Asp.Net网站托管在IIS--IIS负责监听-转发请求--响应客户端,不负责请求的监听-转发-响应(IIS)
+       封装了管道处理模型，只写业务处理逻辑
+    2、Asp.NetCore是控制台利用CreateWebHostBuilder(内置KestrelServer)-启动了服务器--负责监听-转发请求-响应客户端请求
+       一系列动作自己完成的，包括管道模型也是自定义
+   
+
+  
+  
