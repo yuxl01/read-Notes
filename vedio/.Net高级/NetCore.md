@@ -1,6 +1,6 @@
 # .NetCore
 
-### .NetCore的定义
+### .NetFrameWork
 
 `一、.Net Framework包含三部分：`
   
@@ -27,3 +27,5 @@
      C#6.0	  .NET Framework 4.6	    CLR4.0	      Visual Studio 2015
      C#7.0			                              Visual Studio 2017
 
+### .NetCore
+  `为了跨平台，由于framwork向前兼容过于累赘，跨平台成本较高，Core是一套全新的CLR，同时支持windows以及linux`
