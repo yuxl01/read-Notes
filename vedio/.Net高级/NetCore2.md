@@ -36,6 +36,7 @@
      Configuration = configuration;
  }
  
- this.Configuration["Option1"]}"
+ this.Configuration["Option1"]
+ this.Configuration["subsection:suboption1"]
  ```
   
