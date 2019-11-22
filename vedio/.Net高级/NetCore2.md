@@ -1,7 +1,6 @@
 # .NetCore(二)
 
-### 常见应用
-###### 一、配置文件的读取
+### 一、配置文件的读取
   `利用Startup类中的configuration读取appsettings.json中的配置`
   ```.js
   {
@@ -40,7 +39,109 @@
  this.Configuration["subsection:suboption1"]
  ```
  
- ###### 自带IOC容器的使用
+ ### 二、自带IOC容器
  
- 
+ `1、基本使用`
+ ```.cs
+  // 1、NuGet安装引用Microsoft.Extensions.DependencyInjection;
+  using Microsoft.Extensions.DependencyInjection;
+  //2、实例化容器 
+  IServiceCollection container = new ServiceCollection();
+  //注册服务
+  container.AddTransient<Interface,class>();
+  //创建一个System.IServiceProvider提供程序
+  IServiceProvider provider = container.BuildServiceProvider();
+  //创建实例
+  _Interface  interface = provider.GetService<_Interface>()
+ ```
+  `2、服务类型`
   
+     1、container.AddTransient为瞬时生命周期,每次创建都是一个全新的实例
+  ```.cs
+ IServiceCollection container = new ServiceCollection();
+ container.AddTransient<Interface,class>();
+ IServiceProvider provider = container.BuildServiceProvider();
+ _Interface  interface = provider.GetService<_Interface>();
+ _Interface  interface2 = provider.GetService<_Interface>();
+ bool bResult = object.ReferenceEquals(interface, interface2);
+ //b is false 
+    
+   ```
+    2、container.AddSingleton单例：全容器都是一个
+```.cs
+IServiceCollection container = new ServiceCollection();
+container.AddSingleton<Interface,class>();
+IServiceProvider provider = container.BuildServiceProvider();
+_Interface  interface = provider.GetService<_Interface>();
+_Interface  interface2 = provider.GetService<_Interface>();
+bool bResult = object.ReferenceEquals(interface, interface2);
+ //b is True 
+    
+   ```
+    3、container.AddScoped请求单例，一个请求代表一个作用域
+```.cs
+IServiceCollection container = new ServiceCollection();
+container.AddScoped<Interface,class>();
+IServiceProvider provider = container.BuildServiceProvider();
+
+//创建一个Scope作用域,那么由这个域创建的实例是独立的（相较Scope1）
+IServiceScope Scope = provider.CreateScope();
+//创建一个Scope1作用域,那么由这个域创建的实例是独立的
+IServiceScope Scope1 = provider.CreateScope();
+
+_Interface  interface =Scope.ServiceProvider.GetService<_Interface>();
+_Interface  interface2 = Scope1.ServiceProvider.GetService<_Interface>();
+bool bResult = object.ReferenceEquals(interface, interface2);
+ //b is false 
+    
+   ```
+   
+  ### 三、利用AutoFac容器替换自带容器
+    1、重写ConfigureServices将返回值为IServiceProvider
+    2、引入对应容器
+  
+  ```.cs
+ public class CustomAutofacModule : Module
+ {
+      //重新load 添加注册服务
+      //可以实现实例控制
+      //接口约束
+     protected override void Load(ContainerBuilder containerBuilder)
+     {
+         containerBuilder.Register(c => new CustomAutofacAop());
+
+         containerBuilder.RegisterType<TestServiceA>().As<ITestServiceA>().SingleInstance().PropertiesAutowired();
+         containerBuilder.RegisterType<TestServiceC>().As<ITestServiceC>();
+         containerBuilder.RegisterType<TestServiceB>().As<ITestServiceB>();
+         containerBuilder.RegisterType<TestServiceD>().As<ITestServiceD>();
+
+         containerBuilder.RegisterType<A>().As<IA>().EnableInterfaceInterceptors();
+     }
+ }
+  ```
+  
+ ```.cs
+ //返回值为IServiceProvider
+ public IServiceProvider ConfigureServices(IServiceCollection services)
+ {
+  services.Configure<CookiePolicyOptions>(options =>
+  {
+      options.CheckConsentNeeded = context => true;
+      options.MinimumSameSitePolicy = SameSiteMode.None;
+  });
+  services.AddSession();
+  services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+  
+  //1、实例容器
+  var containerBuilder = new ContainerBuilder();
+  //注册一个模块已减少注册代码
+  //也可以直接注册
+  //containerBuilder.RegisterType<TestServiceA>().As<ITestServiceA>().SingleInstance()
+  containerBuilder.RegisterModule<CustomAutofacModule>();
+  IContainer container = containerBuilder.Build();
+  return new AutofacServiceProvider(container);
+}
+ ```
+  
+   
