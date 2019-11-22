@@ -39,4 +39,8 @@
  this.Configuration["Option1"]
  this.Configuration["subsection:suboption1"]
  ```
+ 
+ ###### 自带IOC容器的使用
+ 
+ 
   
