@@ -109,8 +109,10 @@ bool bResult = object.ReferenceEquals(interface, interface2);
      protected override void Load(ContainerBuilder containerBuilder)
      {
          containerBuilder.Register(c => new CustomAutofacAop());
-
+        
+        //设置为属性注入
          containerBuilder.RegisterType<TestServiceA>().As<ITestServiceA>().SingleInstance().PropertiesAutowired();
+         
          containerBuilder.RegisterType<TestServiceC>().As<ITestServiceC>();
          containerBuilder.RegisterType<TestServiceB>().As<ITestServiceB>();
          containerBuilder.RegisterType<TestServiceD>().As<ITestServiceD>();
@@ -139,9 +141,50 @@ bool bResult = object.ReferenceEquals(interface, interface2);
   //也可以直接注册
   //containerBuilder.RegisterType<TestServiceA>().As<ITestServiceA>().SingleInstance()
   containerBuilder.RegisterModule<CustomAutofacModule>();
+  
+  //替换完容器，构造控制器需要的参数，是autofac做的，但是控制器本身是ServiceCollection做的
+  //将services中的服务填充到Autofac中.
+  //containerBuilder.Populate(services)的意思是将所有的创建全部交给Autofac
+  containerBuilder.Populate(services);
   IContainer container = containerBuilder.Build();
   return new AutofacServiceProvider(container);
 }
  ```
-  
+###  四、利用AutoFac实现AOP
+`1、基本使用`
+ ```.cs
+// 1、NuGet安装引用Autofac.Extras.DynamicProxy;
+using  Autofac.Extras.DynamicProxy;
+//创建类库继承自IInterceptor实现接口
+/// 自定义的Autofac的AOP扩展
+
+
+ public class CustomAutofacModule : Module
+ {
+      //重新load 添加注册服务
+      //可以实现实例控制
+      //接口约束
+     protected override void Load(ContainerBuilder containerBuilder)
+     {
+         //注册AOP
+         containerBuilder.Register(c => new CustomAutofacAop());
+         //开启aop扩展
+         containerBuilder.RegisterType<A>().As<IA>().EnableInterfaceInterceptors();
+     }
+ }
+ 
+public class CustomAutofacAop : IInterceptor
+{
+    public void Intercept(IInvocation invocation)
+    {
+        Console.WriteLine($"invocation.Methond={invocation.Method}");
+        Console.WriteLine($"invocation.Arguments={string.Join(",", invocation.Arguments)}");
+
+        invocation.Proceed(); //继续执行
+
+        Console.WriteLine($"方法{invocation.Method}执行完成了");
+    }
+}
+
+ ```
    
