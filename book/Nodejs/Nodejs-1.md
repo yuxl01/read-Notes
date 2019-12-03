@@ -42,3 +42,28 @@ var server = http.createServer(function(req,res){
 server.listen(3000,"127.0.0.1");
 ```
 ### Nodejs Moudle
+
+###### 1、Http
+       
+      使用http模块 
+```.js
+//引入Http模块
+var http  = require('http');
+//引入url模块
+var url = require('url');
+//构建服务器/req为客户端请求对象，res为返回对象
+var server = http.createServer(function(req,res){
+    //客户端请求的url
+   var reqUrl= req.url;
+   //获取请求的Get参数
+   var param = url.parse(req.url,true).query;
+   //写入客户端的请求头
+   res.writeHead(200,{});
+   //返回客户端数据
+   res.end(data);
+});
+
+//服务开始监听
+server.listen(3000,"127.0.0.1");
+```
+
