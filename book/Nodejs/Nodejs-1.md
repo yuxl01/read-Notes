@@ -67,3 +67,29 @@ var server = http.createServer(function(req,res){
 server.listen(3000,"127.0.0.1");
 ```
 
+###### 1、fs
+     读取文件流的函数
+     
+``` .js
+//利用立即执行函数解除异步
+fs.readdir('./1',function(err,files){
+   var fileArray = [];
+   (function iterator(i){
+       if(i==files.length){
+           console.log(fileArray);
+           return;
+     }
+
+         fs.stat("./1/" + files[i],function(err,stats){
+	    //检测成功之后做的事情
+            if(stats.isDirectory()){
+                //如果是文件夹，那么放入数组。不是，什么也不做。
+                fileArray.push(files[i]);
+            }
+            iterator(i+1);
+        });
+   
+   })(0);
+		
+ });
+```
