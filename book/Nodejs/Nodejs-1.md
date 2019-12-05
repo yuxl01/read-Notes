@@ -71,7 +71,7 @@ server.listen(3000,"127.0.0.1");
      读取文件流的函数
      
 ``` .js
-//利用立即执行函数解除异步
+//利用立即执行函数解除异步(迭代器)
 fs.readdir('./1',function(err,files){
    var fileArray = [];
    (function iterator(i){
