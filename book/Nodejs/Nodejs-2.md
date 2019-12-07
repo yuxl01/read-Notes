@@ -29,3 +29,35 @@ module.export = Ctr;
 ###### `2、js文件和js文件之间有两种合作的模式`
     1>某一个js文件中，提供了函数，供别人使用。只需要暴露函数就行了； exports.test=test;
     2>某一个js文件，描述了一个类。   module.exports = People;
+
+### 二、引入模块
+
+###### `通常情况下引入需要加对应文件的相对路径，如果不想加入文件目录路径那么必须用到”node_modules“文件夹`
+    
+    例如：var foo = require("foo.js");   //没有写./l路径,所以不是一个相对路径。是一个特殊的路径。
+    那么Node.js将该文件视为node_modules目录下的一个文件,.node_modules文件夹并不一定在同级目录里面
+    在任何直接祖先级目录中，都可以。也可以放到NODE_PATH环境变量的文件夹中
+    
+    1、首先建立node_modules文件夹并加入自己的模块js
+    2、那么在调用方直接可以使用文件名来调用
+    
+###### `使用文件夹来管理模块`
+
+    1、每一个模块文件夹中，推荐都写一个package.json文件，这个文件的名字不能改。
+    2、node将自动读取里面的配置。有一个main项，就是入口文件：默认为index.js
+    3、如果自定义配置了main入口名称，那么系统将会读取定义的文件
+```.js
+var bar = require("bar");
+//那么Node.js将会去寻找node_modules目录下的bar文件夹中的index.js去执行
+//在package.json中将main改为app.js
+{
+  "name": "kaoladebar",
+  "version": "1.0.1",
+  "main" : "app.js"
+}
+
+```
+       
+       
+       
+    
