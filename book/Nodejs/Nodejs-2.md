@@ -58,6 +58,13 @@ var bar = require("bar");
 
 ```
        
-       
+######  '引用NPM'
+    1、初始化package.json ---npm init
+    2、安装依赖 ---npm install
+  ```.json
+   "dependencies": {
+    "silly-datetime": "^0.1.2" --- 固定版本如果三个都加标记那就固定为当前版本
+  },
+  ```
        
     
