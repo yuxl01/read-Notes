@@ -75,7 +75,7 @@ var bar = require("bar");
 
 ```
        
-######  '4、引用NPM'
+######  `4、引用NPM`
     1、初始化package.json ---npm init
     2、安装依赖 ---npm install
   ```.json
