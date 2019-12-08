@@ -18,7 +18,7 @@
 
 *  [JavaScript](https://github.com/yuxl01/read-Notes/blob/master/vedio/JavaScript.md)
 
-*  [SqlServer](https://github.com/yuxl01/read-Notes/blob/master/vedio/Sqlserver.md)
+*  [C/C++](https://github.com/yuxl01/read-Notes/blob/master/vedio/Sqlserver.md)
 
 *  汇编语言
 
