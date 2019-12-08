@@ -84,4 +84,13 @@ var bar = require("bar");
   },
   ```
        
-    
+### 客户端请求
+
+###### `1、Post`
+	相比较GET请求，POST请求比较复杂。因为Node.js认为，使用POST请求时，数据量会比较多。
+    为了追求极致的效率，它将数据拆分成为了众多小的数据块(chunk)，然后通过特定的事件，将这些小数据块有序传递给回调函数。
+
+###### `2、Get`
+
+    获取请求的Get参数
+    var param = url.parse(req.url,true).query;
