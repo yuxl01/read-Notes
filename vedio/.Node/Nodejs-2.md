@@ -84,7 +84,7 @@ var bar = require("bar");
   },
   ```
        
-### 客户端请求
+### 三、客户端请求
 
 ###### `1、Post`
 	相比较GET请求，POST请求比较复杂。因为Node.js认为，使用POST请求时，数据量会比较多。
@@ -115,3 +115,31 @@ http.createServer(function (req, res) {
 
     获取请求的Get参数
     var param = url.parse(req.url,true).query;
+
+###### `3、使用NPM上的formidable实现文件传输`
+```.js
+var util = require('util'),
+    fb = require('formidable');
+
+var form = new fb.IncomingForm();
+//设置上传路径
+form.uploadDir = './uploads';
+//回调中获取值
+form.parse(req, function (err, fields, files) {
+    console.log(fields);
+    console.log(files);
+    res.writeHead(200, { 'content-type': 'text/plain' });
+    res.write('received upload:\n\n');
+    //传入文件必须在表单中加enctype="multipart/form-data"
+    res.end(
+        '<form action="/upload" enctype="multipart/form-data" method="post">' +
+        '<input type="text" name="title"><br>' +
+        '<input type="file" name="upload" multiple="multiple"><br>' +
+        '<input type="submit" value="Upload">' +
+        '</form>'
+    );
+});
+```
+
+### 四、模板引擎
+
