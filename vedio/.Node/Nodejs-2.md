@@ -149,9 +149,10 @@ form.parse(req, function (err, fields, files) {
  <a href="<%= url %>"><img src="<%= imageURL %>" alt=""></a>
 ```
 ###### `2、后台模板引擎`
-    后台模板，著名的有两个，第一个叫做ejs； 第二个叫做jade。
 
-    1、EJS模板小栗子
+`后台模板，著名的有两个，第一个叫做ejs； 第二个叫做jade。`
+`EJS模板小栗子`
+   
 ```.js
 //npm安装ejs包
 //引入模块
@@ -165,7 +166,7 @@ var data = {
 var html = ejs.render(string ,data);
 console.log(html);
 ```
-    2、EJS模板小栗子2
+`EJS模板小栗子2`
     
 ```.html
 <!doctype html>
@@ -185,7 +186,7 @@ console.log(html);
 </body>
 </html>
 ```
-    后台模板引擎绑定
+`后台模板引擎绑定`
 ```.js
 //创建index.ejs页面
 var _s = require('bar'),
@@ -206,4 +207,8 @@ _s._createServer(function (req, res) {
     });
 });
 ```
+
+`1、jade模板引擎`
+    
+
 
