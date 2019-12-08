@@ -32,7 +32,7 @@ module.export = Ctr;
 
 ### 二、引入模块
 
-###### `通常情况下引入需要加对应文件的相对路径，如果不想加入文件目录路径那么必须用到”node_modules“文件夹`
+###### `1、通常情况下引入需要加对应文件的相对路径，如果不想加入文件目录路径那么必须用到”node_modules“文件夹`
 
     例如：var foo = require("foo.js");   //没有写./l路径,所以不是一个相对路径。是一个特殊的路径。
     那么Node.js将该文件视为node_modules目录下的一个文件,.node_modules文件夹并不一定在同级目录里面
@@ -41,7 +41,7 @@ module.export = Ctr;
     1、首先建立node_modules文件夹并加入自己的模块js
     2、那么在调用方直接可以使用文件名来调用
     
-###### `require()中的路径，是从当前这个js文件出发，找到目标。而fs是从命令提示符找到目标`
+###### `2、require()中的路径，是从当前这个js文件出发，找到目标。而fs是从命令提示符找到目标`
 
     1、如果读取文件就需要"__dirname+文件名"
     
@@ -58,7 +58,7 @@ fs.readFile(__dirname + "/1.txt",function(err,data){
 });
 ```
     
-###### `使用文件夹来管理模块`
+###### `3、使用文件夹来管理模块`
 
     1、每一个模块文件夹中，推荐都写一个package.json文件，这个文件的名字不能改。
     2、node将自动读取里面的配置。有一个main项，就是入口文件：默认为index.js
@@ -75,7 +75,7 @@ var bar = require("bar");
 
 ```
        
-######  '引用NPM'
+######  '4、引用NPM'
     1、初始化package.json ---npm init
     2、安装依赖 ---npm install
   ```.json
