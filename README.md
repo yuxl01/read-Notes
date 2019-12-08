@@ -16,9 +16,9 @@
 
 *  [.Net](./vedio/.Net.md)
 
-*  [JavaScript](https://github.com/yuxl01/read-Notes/blob/master/vedio/JavaScript.md)
+*  [JavaScript](./vedio/JavaScript.md)
 
-*  [C](https://github.com/yuxl01/read-Notes/blob/master/vedio/C.md)
+*  [C](./vedio/C.md)
 
 *  汇编语言
 
