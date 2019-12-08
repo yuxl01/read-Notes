@@ -143,3 +143,67 @@ form.parse(req, function (err, fields, files) {
 
 ### 四、模板引擎
 
+###### `1、前端模板引擎定义`
+    数据绑定,就成为一个完整的html字符串了。
+```.html
+ <a href="<%= url %>"><img src="<%= imageURL %>" alt=""></a>
+```
+###### `2、后台模板引擎`
+    后台模板，著名的有两个，第一个叫做ejs； 第二个叫做jade。
+
+    1、EJS模板小栗子
+```.js
+//npm安装ejs包
+//引入模块
+var _s = require('bar'),
+    ejs = require('ejs');
+
+var string = "模板<%= a %>";
+var data = {
+    a: 6
+}
+var html = ejs.render(string ,data);
+console.log(html);
+```
+    2、EJS模板小栗子2
+    
+```.html
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>模板<%= a %>s</h1>
+    <ul>
+        <% for(var i =0;i<news.length;i++){%>
+            <li><%=news[i]%></li>
+        <%}%>
+    </ul>
+</body>
+</html>
+```
+    后台模板引擎绑定
+```.js
+//创建index.ejs页面
+var _s = require('bar'),
+    ejs = require('ejs'),
+    fs = require('fs');
+
+_s._createServer(function (req, res) {
+
+    fs.readFile('./views/index.ejs', function (err, data) {
+        var template = data.toString();
+        var dictionary = {
+            a: 6,
+            news: ['1', '2', '3', '4']
+        };
+        var html = ejs.render(template, dictionary);
+        res.writeHead(200, { "Content-Type": "text/html;charset=UTF8" });
+        res.end(html);
+    });
+});
+```
+
