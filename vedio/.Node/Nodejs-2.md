@@ -89,6 +89,27 @@ var bar = require("bar");
 ###### `1、Post`
 	相比较GET请求，POST请求比较复杂。因为Node.js认为，使用POST请求时，数据量会比较多。
     为了追求极致的效率，它将数据拆分成为了众多小的数据块(chunk)，然后通过特定的事件，将这些小数据块有序传递给回调函数。
+    
+```.js
+var http = require('http');
+var querystring = require("querystring");
+
+http.createServer(function (req, res) {
+    var postData = "";
+    //分段接收post参数
+    req.addListener('data', function (chunk) {
+        postData += chunk;
+    });
+    //最终完成的字符串
+    req.addListener('end', function () {
+        var datastring = postData.toString();
+        res.end("success");
+        //将datastring转为一个对象
+        var dataObj = querystring.parse(datastring);
+    })
+
+}).listen(8080, "127.0.0.1");
+```
 
 ###### `2、Get`
 
