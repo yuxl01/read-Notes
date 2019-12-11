@@ -2,7 +2,7 @@
 
   Express框架是后台的Node框架
   
-### Express框架
+### 一、Express框架
     原生Node开发，会发现有很多问题。比如：
     
   	  ■ 呈递静态页面很不方便，需要处理每个HTTP请求，还要考虑304问题
@@ -71,7 +71,7 @@ app.get('/', function (req, res) {
 })
 app.listen(3000);
  ```
-### 路由
+### 二、路由
 
 ###### 1、访问类型
 
@@ -101,4 +101,5 @@ app.get('/student/:id/:name', function (req, res) {
 
  RESTful路由设计一个路径，但是http method不同，对这个页面的使用也不同
 ```
-### 中间件
+### 三、中间件
+
