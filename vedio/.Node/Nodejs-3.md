@@ -98,5 +98,7 @@ app.get('/student/:id/:name', function (req, res) {
    var id = req.params["id"];
    var name =req.params["name"]
 });
+
+ RESTful路由设计一个路径，但是http method不同，对这个页面的使用也不同
 ```
 ### 中间件
