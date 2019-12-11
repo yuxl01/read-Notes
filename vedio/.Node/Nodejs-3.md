@@ -73,4 +73,30 @@ app.listen(3000);
  ```
 ### 路由
 
+###### 1、访问类型
+
+ `url不区分大小写，利用正则，冒号动态参数使用路由`
+  
+``` .js
+const express = require('express');
+const app = new express();
+//get请求
+app.get("/aAb",function(req,res){
+	res.send('Hello World');
+});
+//post请求
+app.post("abc",function(req,res){
+	
+});
+//支持任何method的请求
+app.all("/",function(){
+	
+});
+
+//利用冒号动态参数
+app.get('/student/:id/:name', function (req, res) {
+   var id = req.params["id"];
+   var name =req.params["name"]
+});
+```
 ### 中间件
