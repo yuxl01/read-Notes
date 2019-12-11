@@ -28,7 +28,49 @@ app.get(/^\/index\/([\d]{10})$/, function (req, res) {
 
 app.listen(3000);
 ```
+ ###### 2、使用静态服务
  
+ ```.js
+var express = require('express');
+var app = new express();
+//开启静态服务
+app.use(express,static('./public'));
+ ```
+ 
+ ###### 3、调用模板引擎
+    1、创建index.ejs html页
+ ``` .html
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h1>使用express测试模板页</h1>
+    <ul>
+        <% for(var i=0;i<news.length;i++){%>
+        <li><%=news[i]%></li>
+        <%}%>
+    </ul>
+</body>
+</html>
+ ```
+    2、绑定数据源
+ ```.js
+const express = require('express');
+const app = new express();
+
+//设置模板引擎
+app.set("view engine", 'ejs');
+//创建数据源
+app.get('/', function (req, res) {
+    res.render('index', {
+        "news": ["1", "2", "3"]
+    });
+})
+app.listen(3000);
+ ```
 ### 路由
 
 ### 中间件
