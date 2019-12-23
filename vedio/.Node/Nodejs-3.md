@@ -103,3 +103,41 @@ app.get('/student/:id/:name', function (req, res) {
 ```
 ### 三、中间件
 
+	1、如果在express中存在相同路由的并且get、post回调函数中没有next参数，那么就匹配上第一个路由，就不会往下匹配了,只有调用next才会继续往下匹配
+
+``` .js
+const express = require('express');
+const app = new express();
+
+app.get("/:user/:id", function (req, res) {
+
+    console.log('1');
+    res.send("用户信息" + req.params.user);
+	//只有使用了next,当前没匹配上才会往下
+    next();
+});
+
+app.get("/admin/login", function (req, res) {
+
+    console.log('2');
+    res.send("admin is logined");
+});
+
+
+app.listen(3000);
+```
+
+	2、app.use()是一个特殊的中间件，第一个参数不写“/”就代表所有的路径。
+
+```.js
+app.use("/admin", function (req, res) {
+		//输出所有 admin/aa/bb/cc/dd
+         res.write(req.originalUrl + "\n");  
+		//输出第一级 admin
+         res.write(req.baseUrl + "\n");  
+		//输出子级 aa/bb/cc/dd
+        res.write(req.path + "\n");      
+    res.end("Hello World");
+});
+
+```
