@@ -21,10 +21,10 @@
    
 	
 	
-  `npm下载包 Npm -install mongodb`
+ 
 	
 ### 二、利用MongoDB包连接MongoDB
-
+ `npm下载包 Npm -install mongodb`
 ``` .js
 //解构初始化参数
 const [dbClient, _connect] = [require("mongodb"), (cb) => {
