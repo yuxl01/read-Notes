@@ -1,8 +1,29 @@
-# MongoDB数据库结合开发
+# MongoDB在Node中使用
 
+### 一、MongoDB命令
+
+###### 1、基本操作
+    1、查看数据库
+    show dbs;
+    2、切换到指定数据库
+    use “dbName”
+    3、查询总行数
+    db.getCollection('student').count()
+    db.collectionName.stats().count
+    db.collectionName.find().count()
+    4、查询所有数据
+    db.getCollection('student').find({});
+    5、查询name为sa的数据
+    db.getCollection('student').find({'name':'sa'});
+
+****
+
+   
+	
+	
   `npm下载包 Npm -install mongodb`
 	
-###### 一、利用Mongodb包连接MongoDB
+### 二、利用MongoDB包连接MongoDB
 
 ``` .js
 //解构初始化参数
