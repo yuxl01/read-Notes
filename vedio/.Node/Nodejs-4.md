@@ -3,6 +3,8 @@
 ### 一、MongoDB命令
 
 ###### 1、基本操作
+   
+``` .mongodb
     1、查看数据库
     show dbs;
     2、切换到指定数据库
@@ -15,7 +17,8 @@
     db.getCollection('student').find({});
     5、查询name为sa的数据
     db.getCollection('student').find({'name':'sa'});
-
+```
+  
 ****
 
    
