@@ -1,6 +1,8 @@
 # Pipeline(一)
 
-### `思考的问题`
+### 1、基础概念
+
+##### `思考的问题`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MVC,WebForm 之类的框架做应用程序的开发之后部署到IIS,用户在浏览器输入url地址之后是怎么到达我们的应用程序？
 
 ##### 一、什么是管道模型?
@@ -80,4 +82,9 @@
      1、HttpApplication处理各式各样的请求	
      2、由于处理不尽相同，但是可能都需要，所以使用了事件的模式来扩展。
 
-     
+
+### 二、Http请求处理流程
+### 二、HttpApplication事件
+### 三、HttpModule
+### 四、Global事件
+
