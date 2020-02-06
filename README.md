@@ -16,6 +16,8 @@
 
 *  [.Net](./vedio/.Net.md)
 
+*  [Java](./vedio/java.md)
+
 *  [JavaScript](./vedio/JavaScript.md)
 
 *  [C](./vedio/C.md)
