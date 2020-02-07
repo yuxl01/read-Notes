@@ -1,6 +1,6 @@
 # Pipeline(一)
 
-### 1、基础概念
+### 1、Http请求处理流程
 
 ##### `思考的问题`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MVC,WebForm 之类的框架做应用程序的开发之后部署到IIS,用户在浏览器输入url地址之后是怎么到达我们的应用程序？
@@ -22,7 +22,7 @@
     
     5、如果MVC请求没有后缀，IIS6会为没有后缀的加一个默认的.axd后缀，IIS7之后就不用了,可以直接映射到HttpRoutingModules。
 
-#### 四、HttpApplication的事件
+### 二、HttpApplication事件
 
 ![原型图片](https://github.com/yuxl01/read-Notes/blob/master/imag/pipeline-1-1.png)
      
@@ -83,8 +83,6 @@
      2、由于处理不尽相同，但是可能都需要，所以使用了事件的模式来扩展。
 
 
-### 二、Http请求处理流程
-### 二、HttpApplication事件
 ### 三、HttpModule
 ### 四、Global事件
 
