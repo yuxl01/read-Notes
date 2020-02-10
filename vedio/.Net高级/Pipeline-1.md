@@ -90,6 +90,7 @@
 
      1、HttpModule是HttpApplication一系列事件的扩展。
      2、只要扩展了HttpModule那么所有的上下文请求都会经过,所以比较适合做一些全局的操作。
+     3、可以实现"缓存,Url转发"
      
 ###### 1、创建自定义HttpModule
 ###### `必须继承自IhttpModule`
@@ -150,3 +151,26 @@
 ```
 ### 四、Global事件
 
+ `框架约定俗称的事件,类似的有Session实现的HttpModule`
+ 
+ ###### 1、扩展一个HttpModule,然后暴露出一个事件
+ ```.cs
+  public class GlobalModule : IHttpModule
+    {
+        public event EventHandler GlobalModuleEvent;
+    }  
+ ```
+ ###### 2、然后在Global中定义动作，框架会自动调用
+ ```.cs
+  /// <summary>
+/// HttpModule注册名称_事件名称
+/// 约定的
+/// </summary>
+/// <param name="sender"></param>
+/// <param name="e"></param>
+protected void GlobalModule_GlobalModuleEvent(object sender, EventArgs e)
+{
+    Response.Write("来自Global.asax 的文字GlobalModule_GlobalModuleEvent");
+}
+ ```
+    
