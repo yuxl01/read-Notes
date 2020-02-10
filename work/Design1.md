@@ -22,7 +22,7 @@ internal class DefaultControllerResolver : IControllerResolver
 		public virtual IController GetController(Type controllerType)
 		{
         //
-		   return ControllerActivator.Create(requestContext, controllerType);
+		   return  Activator.CreateInstance(controllerType);
 		}
 	}
 ```
