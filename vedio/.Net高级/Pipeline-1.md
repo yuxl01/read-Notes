@@ -87,5 +87,65 @@
 
 
 ### 三、HttpModule
+
+     只要扩展了HttpModule那么所有的上下文请求都会经过,所以比较适合做一些全局的操作。
+     
+###### 1、创建自定义HttpModule
+###### `必须继承自IhttpModule`
+    
+```.cs
+   public class HttpModuleInstance : IHttpModule
+    {
+        /// <summary>
+        /// Init方法仅用于给期望的事件注册方法
+        /// </summary>
+        /// <param name="httpApplication"></param>
+        public void Init(HttpApplication httpApplication)
+        {
+            //Asp.net处理的第一个事件，表示处理的开始
+            httpApplication.BeginRequest += new EventHandler(context_BeginRequest);
+            //本次请求处理完成
+            httpApplication.EndRequest += new EventHandler(context_EndRequest);
+        }
+
+        // 处理BeginRequest 事件的实际代码
+        private void context_BeginRequest(object sender, EventArgs e)
+        {
+            HttpApplication application = (HttpApplication)sender;
+            HttpContext context = application.Context;
+            string extension = Path.GetExtension(context.Request.Url.AbsoluteUri);
+            if (string.IsNullOrWhiteSpace(extension) && !context.Request.Url.AbsolutePath.Contains("Verify"))
+            {
+                context.Response.Write(string.Format("来自HttpModuleInstance的处理", DateTime.Now.ToString()));
+            }
+            //处理地址重写
+            if (context.Request.Url.AbsolutePath.Equals("/Pipe/Some", StringComparison.OrdinalIgnoreCase))
+                context.RewritePath("/Pipe/Handler");
+        }
+
+        // 处理EndRequest 事件的实际代码
+        private void context_EndRequest(object sender, EventArgs e)
+        {
+            HttpApplication application = (HttpApplication)sender;
+            HttpContext context = application.Context;
+            string extension = Path.GetExtension(context.Request.Url.AbsoluteUri);
+            if (string.IsNullOrWhiteSpace(extension) && !context.Request.Url.AbsolutePath.Contains("Verify"))
+                context.Response.Write(string.Format("HttpModuleInstance请求结束",DateTime.Now.ToString()));
+        }
+
+        public void Dispose()
+        {
+
+        }
+```
+###### 2、配置文件配置HttpModule
+``` .xml
+ <system.webServer>
+    <!--VS2013及以后/IIS7.0之后的集成模式-->
+    <!--<add name="HttpModuleInstance" type="xllib.Web.Core.HttpModuleInstance,xllib.Web.Core" />-->
+    </modules>
+    </modules>-->
+  </system.webServer>
+```
 ### 四、Global事件
 
