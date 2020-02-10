@@ -192,4 +192,26 @@ protected void GlobalModule_GlobalModuleEvent(object sender, EventArgs e)
     Response.Write("来自Global.asax 的文字GlobalModule_GlobalModuleEvent");
 }
  ```
+###### Application_Error事件
+    可以获取整个网站内的错误，可以做统一错误页面跳转
+
+``` .cs
+protected void Application_Error(object sender, EventArgs e)
+{
+    // 在出现未处理的错误时运行的代码
+    var error = Server.GetLastError();
+    HttpApplication application = (HttpApplication)sender;
+    HttpContext context = application.Context;
+    if (context.Request.Url.AbsolutePath.Equals("/Home/Index1", StringComparison.OrdinalIgnoreCase))
+    {
+        return;
+    }
+    else
+    {
+        Server.ClearError();
+        context.Response.Write(string.Format("啊哦,出错了", DateTime.Now.ToString()));
+    }
+   
+}
+```
     
