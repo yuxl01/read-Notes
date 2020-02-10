@@ -28,6 +28,8 @@
 
 # Work
 
-*  [问题及解决方式](https://github.com/yuxl01/read-Notes/blob/master/work/question.md)
+*  [问题及解决方式](./work/question.md)
 
-*  [Git操作和使用](https://github.com/yuxl01/read-Notes/blob/master/work/OperGit.md)
+*  [Git操作和使用](./work/OperGit.md)
+
+*  [有意思的框架源代码](./work/Design1.md)
