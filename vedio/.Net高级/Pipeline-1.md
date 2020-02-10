@@ -88,7 +88,8 @@
 
 ### 三、HttpModule
 
-     只要扩展了HttpModule那么所有的上下文请求都会经过,所以比较适合做一些全局的操作。
+     1、HttpModule是HttpApplication一系列事件的扩展。
+     2、只要扩展了HttpModule那么所有的上下文请求都会经过,所以比较适合做一些全局的操作。
      
 ###### 1、创建自定义HttpModule
 ###### `必须继承自IhttpModule`
