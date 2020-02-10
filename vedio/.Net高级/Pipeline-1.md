@@ -151,14 +151,33 @@
 ```
 ### 四、Global事件
 
+ ##### `暴漏扩展HttpModule`
  `框架约定俗称的事件,类似的有Session实现的HttpModule`
  
  ###### 1、扩展一个HttpModule,然后暴露出一个事件
  ```.cs
-  public class GlobalModule : IHttpModule
-    {
+ public class GlobalModule : IHttpModule
+  {
         public event EventHandler GlobalModuleEvent;
-    }  
+        
+        /// <summary>
+        /// Init方法仅用于给期望的事件注册方法
+        /// </summary>
+        /// <param name="httpApplication"></param>
+        public void Init(HttpApplication httpApplication)
+        {
+            httpApplication.BeginRequest += new EventHandler(context_BeginRequest);//Asp.net处理的第一个事件，表示处理的开始
+        }
+
+        // 处理BeginRequest 事件的实际代码
+        void context_BeginRequest(object sender, EventArgs e)
+        {
+            if (GlobalModuleEvent != null)
+                GlobalModuleEvent.Invoke(this, e);
+        }
+   }  
+    
+    
  ```
  ###### 2、然后在Global中定义动作，框架会自动调用
  ```.cs
