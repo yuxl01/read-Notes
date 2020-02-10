@@ -30,6 +30,9 @@
        完成上下文的初始化为HttpContext.
        
     7、把实例化的上下文HttpContext传入HttpApplicationFactory创建出一个`HttpApplication`的实例.
+    
+    8、HttpApplication处理和各种请求(权限认证/缓存处理/session处理，每个步骤都需要,但是各不相同)
+       利用观察者封装共性部分，留下扩展部分
       
  ###### `HttpApplication`
  
