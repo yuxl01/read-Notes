@@ -28,8 +28,4 @@
 
 # ...
 
-*  [问题及解决方式](./work/question.md)
-
-*  [Git操作和使用](./work/OperGit.md)
-
-*  [有意思的框架源代码](./work/Design1.md)
+*  [- - - - - - -](./work/.question.md)
