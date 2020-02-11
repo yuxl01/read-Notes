@@ -166,7 +166,8 @@
         /// <param name="httpApplication"></param>
         public void Init(HttpApplication httpApplication)
         {
-            httpApplication.BeginRequest += new EventHandler(context_BeginRequest);//Asp.net处理的第一个事件，表示处理的开始
+            //Asp.net处理的第一个事件，表示处理的开始
+            httpApplication.BeginRequest += new EventHandler(context_BeginRequest);
         }
 
         // 处理BeginRequest 事件的实际代码
