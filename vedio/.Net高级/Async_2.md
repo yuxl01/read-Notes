@@ -113,7 +113,7 @@ ThreadPool.QueueUserWorkItem(new WaitCallback(t =>
       4、获取最小线程数ThreadPool.GetMinThreads();
       5、返回最大线程数和当前线程的差值ThreadPool.GetAvailableThreads();
       
-##### `3、ManualResetEvent`
+##### `3、ManualResetEvent线程等待`
       
       通知一个或多个正在等待的线程已发生事件，允许线程通过发信号互相通信，来控制线程是否可以访问资源。
 ``` .cs
