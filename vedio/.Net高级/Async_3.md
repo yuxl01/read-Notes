@@ -151,3 +151,31 @@ for (int i = 0; i < 10000; i++)
 ```
 
 ### 四、await async
+
+    await async是语法糖,属于编译器提供的功能.
+
+```.cs
+ private static async Task NoReturn()
+{
+    //主线程执行
+    Console.WriteLine("111");
+    Task task = taskFactory.StartNew(() =>
+    {
+        Console.WriteLine("子线程执行开始");
+        Thread.Sleep(3000);
+        Console.WriteLine("子线程执行结束");
+    });
+    //主线程到这里就返回了，执行主线程任务
+    await task;
+
+    //子线程执行其实是封装成委托,在task之后成为回调（编译器功能状态机实现）
+    //这个回调的线程是不确定的：可能是主线程  可能是子线程  也可能是其他线程
+    Console.WriteLine("执行回调");
+}
+```
+
+    1、主线程遇到await就返回了,继续执行主线程任务.
+    2、await后面的代码由子线程执行,其实是封装成委托,在task之后成为回调（编译器功能\状态机实现）
+    3、无返回值async Task == async void
+
+###### 内部实现原理利用状态机实现IAsyncStateMachine

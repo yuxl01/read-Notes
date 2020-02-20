@@ -16,19 +16,21 @@
      1、Queue先进先出。
      2、Stack先进后出。
      
-###### `4 :Hashtable/Dictionary`
+###### `4 :Hashtable/Dictionary不是线性结构为散列`
      1、Hashtable数据不能太多
+     2、快速的增删改查：空间换时间的
+     3、线程安全的集合
+
+     1、Dictionary泛型的hashtable
+     2、支持索引访问
      
-### 二、IEnumerable、ICollection、IList、IQueryable
 
-###### `1 :IEnumerable`
-###### `2 :ICollection`
-###### `3 :IList`
-###### `4 :IQueryable`
 
-### 三、迭代器模式，yield
+### 二、迭代器模式，yield
 
 ###### `1 :实现方式`
+     1、必须实现IEnumerable接口
+     2、只要内部有IEnumerator GetEnumerator()
 ###### `2 :特点和原理`
 
 ### 四、dynamic关键字
