@@ -9,7 +9,7 @@
 
 ##### 1、表达式目录树类型
     
-    1、Expression<Func<int, int, int>> exp = (m, n) => m * n + 2
+    1、Expression<Func<int, int, int>> exp = (m, n) => m * n - 5
     
 ```.cs
 //声明参数a
@@ -23,12 +23,12 @@ ConstantExpression c = Expression.Constant(5, typeof(int));
 //构建右树
 BinaryExpression right = Expression.Subtract(left, c);
 //拼接表达式
-Expression<Func<int, int, int>> expression = Expression.Lambda<Func<int, int, int>>(right, new ParameterExpression[]
+Expression<Func<int,int,int>> expression=Expression.Lambda<Func<int,int,int>>(right,new ParameterExpression[]
 {
     f,s
 });
 //Compile编译表达式调用
-int result =     expression.Compile().Invoke(2,3);  
+int result =   expression.Compile()(2,3);  
 ```
 
 ### 二、动态拼装表达目录树和扩展应用
