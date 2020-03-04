@@ -10,7 +10,10 @@
 ##### 1、表达式目录树类型
     
     1、Expression<Func<int, int, int>> exp = (m, n) => m * n - 5
-    
+
+### 二、动态拼装表达目录树和扩展应用
+
+    1、动态拼装表达式
 ```.cs
 //声明参数a
 ParameterExpression f = Expression.Parameter(typeof(int),"a");
@@ -30,8 +33,6 @@ Expression<Func<int,int,int>> expression=Expression.Lambda<Func<int,int,int>>(ri
 //Compile编译表达式调用
 int result =   expression.Compile()(2,3);  
 ```
-
-### 二、动态拼装表达目录树和扩展应用
 
 ### 三、解析表达式目录树，生成sql
 
