@@ -13,7 +13,8 @@
     
     1、Expression<Func<int, int, int>> exp = (m, n) => m * n - 5
     
-    ```.cs
+```.cs
+
 //声明参数a
 ParameterExpression f = Expression.Parameter(typeof(int),"a");
 //声明参数b
@@ -31,6 +32,7 @@ Expression<Func<int,int,int>> expression=Expression.Lambda<Func<int,int,int>>(ri
 });
 //Compile编译表达式调用
 int result =   expression.Compile()(2,3);  
+
 ```
 
 ### 二、动态拼装表达目录树和扩展应用
