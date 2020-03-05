@@ -43,6 +43,10 @@ int result =   expression.Compile()(2,3);
 ParameterExpression param = Expression.Parameter(typeof(string),"o");
 //声明一个常量表达式
 ConstantExpression  const   ConstantExpression cont = Expression.Constant("5",typeof(string));
+//属性赋值p.Id = id
+MemberBinding mbi = Expression.Bind(item, meb);
+//构造新的类
+ MemberInitExpression miep = Expression.MemberInit(Expression.New(typeof(OutEntity)), memberList.ToArray())
 //声明表示访问类属性或者类字段 (拼接o.Id)
 MemberExpression filed = Expression.Field(param,typeof(object).GetField("Id"));
 
@@ -61,12 +65,51 @@ MethodCallExpression m = Expression.Call(m,mi2,expressionarr);
 //拼接Lambda传入参数表达式 为编译做准备
 Expression[] expressionarr1 = new Expression[] { param };
 Expression<Func<People, bool>> expression = Expression.Lambda<Func<People, bool>>(m,expressionarr1);
+
 //编译表达式
 expression.Compile()
 ```
 
+### 三、表达式树的拼装链接
+    
+* `1、利用表达式目录树扩展转换dto的插件`
+
+```.cs
+public class ExpressionGenericMapper<OutEntity, InEntity>
+{
+
+    private static Func<InEntity, OutEntity> _Func = null;
 
 
-### 三、解析表达式目录树，生成sql
+    static ExpressionGenericMapper()
+    {
+        ParameterExpression param = Expression.Parameter(typeof(InEntity), "p");
+        List<MemberBinding> memberList = new List<MemberBinding>();
+        //循环属性
+        foreach (var item in typeof(OutEntity).GetProperties())
+        {
+            MemberExpression meb = Expression.Property(param, typeof(InEntity).GetProperty(item.Name));
+            //将传入的字段赋值给OutEntity的属性
+            MemberBinding mbi = Expression.Bind(item, meb);
+            memberList.Add(mbi);
+        }
+        //循环字段
+        foreach (var item in typeof(OutEntity).GetFields())
+        {
+            MemberExpression meb = Expression.Field(param, typeof(InEntity).GetField(item.Name));
+            MemberBinding mbi = Expression.Bind(item, meb);
+            memberList.Add(mbi);
+        }
+        MemberInitExpression miep = Expression.MemberInit(Expression.New(typeof(OutEntity)), memberList.ToArray());
+        Expression<Func<InEntity, OutEntity>> ef = Expression.Lambda<Func<InEntity, OutEntity>>(miep, new ParameterExpression[] {
+            param
+        });
+        _Func = ef.Compile();
+    }
 
-### 四、表达式树的拼装链接
+    public static OutEntity Copy(InEntity inEntity)
+    {
+        return _Func(inEntity);
+    }
+
+```
