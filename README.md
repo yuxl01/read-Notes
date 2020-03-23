@@ -4,7 +4,6 @@
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 #  Book
-*  [《宽容》](./book/宽容.md)
 
 *  [《领域驱动设计》](./book/领域驱动设计.md)
 
