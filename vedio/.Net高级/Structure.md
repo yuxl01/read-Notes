@@ -149,3 +149,6 @@ public IEnumerable<int> Power()
     2、yield是迭代器的状态机，可以做到延迟查询，按需加载。
 
 ### 四、dynamic关键字
+     
+     1、dynamic可以隐式转换成任何类型
+     2、无视编译器的检查，运行的时候才确定类型的
