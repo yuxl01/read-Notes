@@ -26,7 +26,7 @@
      
 
 
-### 二、迭代器模式，yield
+### 二、迭代器模式
 
 ###### `1 :实现方式`
      1、必须实现IEnumerable接口
@@ -132,6 +132,20 @@
  }
  ```
     2、实现迭代器模式的好处是可以统一访问方式。
-     
+    
+###### `3 :Yield`
+```.cs
+public IEnumerable<int> Power()
+{
+    for (int i = 0; i < 10; i++)
+    {
+        yield return this.Get(i);
+        if (i == 3)
+            yield break;
+    }
+}
+```
+    1、yield必须出现在IEnumerable。
+    2、yield是迭代器的状态机，可以做到延迟查询，按需加载。
 
 ### 四、dynamic关键字
