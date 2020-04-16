@@ -131,6 +131,7 @@
      Food food = foodIterator.Current;
  }
  ```
+    2、实现迭代器模式的好处是可以统一访问方式。
      
 
 ### 四、dynamic关键字
