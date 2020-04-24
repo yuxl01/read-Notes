@@ -77,40 +77,38 @@ expression.Compile()
 ```.cs
 public class ExpressionGenericMapper<OutEntity, InEntity>
 {
-
-    private static Func<InEntity, OutEntity> _Func = null;
-
-
-    static ExpressionGenericMapper()
+//声明一个委托,传入InEntity,转换目标OutEntity
+private static Func<InEntity, OutEntity> _Func = null;
+static ExpressionGenericMapper()
+{
+    ParameterExpression param = Expression.Parameter(typeof(InEntity), "p");
+    List<MemberBinding> memberList = new List<MemberBinding>();
+    //循环属性
+    foreach (var item in typeof(OutEntity).GetProperties())
     {
-        ParameterExpression param = Expression.Parameter(typeof(InEntity), "p");
-        List<MemberBinding> memberList = new List<MemberBinding>();
-        //循环属性
-        foreach (var item in typeof(OutEntity).GetProperties())
-        {
-            MemberExpression meb = Expression.Property(param, typeof(InEntity).GetProperty(item.Name));
-            //将传入的字段赋值给OutEntity的属性
-            MemberBinding mbi = Expression.Bind(item, meb);
-            memberList.Add(mbi);
-        }
-        //循环字段
-        foreach (var item in typeof(OutEntity).GetFields())
-        {
-            MemberExpression meb = Expression.Field(param, typeof(InEntity).GetField(item.Name));
-            MemberBinding mbi = Expression.Bind(item, meb);
-            memberList.Add(mbi);
-        }
-        MemberInitExpression miep = Expression.MemberInit(Expression.New(typeof(OutEntity)), memberList.ToArray());
-        Expression<Func<InEntity, OutEntity>> ef = Expression.Lambda<Func<InEntity, OutEntity>>(miep, new ParameterExpression[] {
-            param
-        });
-        _Func = ef.Compile();
+        MemberExpression meb = Expression.Property(param, typeof(InEntity).GetProperty(item.Name));
+        //将传入的字段赋值给OutEntity的属性
+        MemberBinding mbi = Expression.Bind(item, meb);
+        memberList.Add(mbi);
     }
-
-    public static OutEntity Copy(InEntity inEntity)
+    //循环字段
+    foreach (var item in typeof(OutEntity).GetFields())
     {
-        return _Func(inEntity);
+        MemberExpression meb = Expression.Field(param, typeof(InEntity).GetField(item.Name));
+        MemberBinding mbi = Expression.Bind(item, meb);
+        memberList.Add(mbi);
     }
+    //构造OutEntity类型 传入构造需要的属性
+    MemberInitExpression miep = Expression.MemberInit(Expression.New(typeof(OutEntity)), memberList.ToArray());
+    ParameterExpression[] parArr = new ParameterExpression[] {param};
+    Expression<Func<InEntity, OutEntity>> ef = Expression.Lambda<Func<InEntity, OutEntity>>(miep,parArr);
+    _Func = ef.Compile();
+}
+
+public static OutEntity Copy(InEntity inEntity)
+{
+    return _Func(inEntity);
+}
 
 ```
 ### 四、ExpressionVisitor
