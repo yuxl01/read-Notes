@@ -16,7 +16,7 @@
   |C#1.2|.NET Framework 1.1|CLR1.1	|Visual Studio 2003|
   |C#2.0	|  .NET Framework 2.0	|    CLR2.0	  |     Visual Studio 2005 |  
   |         | .NET Framework 2.0	 |   CLR2.0	 |       Visual Studio 2008 |  
-  |  C#3.0  |  .NET Framework 3.0	    CLR2.0      |         Visual Studio 2010 |  
+  |  C#3.0  |  .NET Framework 3.0	    |   CLR2.0      |         Visual Studio 2010 |  
   |         |  .NET Framework 3.5	 |      CLR2.0	 |  
   |  C#4.0	|  .NET Framework 4.0	 |      CLR4.0	  |       Visual Studio 2010 |  
   |  C#5.0	|  .NET Framework 4.5 |  	    CLR4.0	 |        Visual Studio 2012 |  
