@@ -5,7 +5,7 @@
 
 #  Book
 
-*  [《领域驱动设计》](./book/领域驱动设计.md)
+
 
 *  [《你不知道的js上》](./book/你不知道的JS上.md)
 
@@ -14,11 +14,11 @@
 
 *  [.Net](./vedio/.Net.md)
 
-*  [Java](./vedio/java.md)
+
 
 *  [JavaScript](./vedio/JavaScript.md)
 
-*  [C](./vedio/C.md)
+
 
 *  [Node](./vedio/Node.md)
 
