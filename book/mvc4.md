@@ -1,8 +1,10 @@
 - # mvc4 框架揭秘
-     * ###### 本书作者是蒋金楠
+     * ###### 本书作者：蒋金楠
         > • 作者博客: http://www.cnblogs.com/artech
         >> • 作者微博: http://www.weibo.com/artech
         >>> • 电子邮箱: jiangjinnan@gmail.com 
+        
+        ----
   - 第一章 ASP.NET + MVC
     - [传统 MVC 模式](../book/Mvc4kjjm/第一章.md/###&nbsp一、传统MVC模式 )
     - [MVC 的变体](../book/Mvc4kjjm/第一章.md/###二、MVC的变体)
