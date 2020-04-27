@@ -10,9 +10,9 @@
     - [IIS/ ASP .NET 管道](../book/Mvc4kjjm/第一章.md/###&nbsp三、IIS/ASP.NET管道)
 
   - 第二章 URL 路由
-    - [ASP.NET 路由系统](1##)
-    - [ASP.NET MVC 扩展](1##)
-    - [动态 Handler 映射…](1#)
+    - [ASP.NET 路由系统](../book/Mvc4kjjm/第二章.md)
+    - [ASP.NET MVC 扩展](../book/Mvc4kjjm/第二章.md)
+    - [动态 Handler 映射…](../book/Mvc4kjjm/第二章.md)
 
   - 第三章 Controller 的激活
     - [总体设计](1##)
