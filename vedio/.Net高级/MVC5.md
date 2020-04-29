@@ -75,5 +75,45 @@ string name = base.Model.Name
 ```
 ### 三、razor语法 html扩展控件
 
+###### 1.razor常用语法
+    
+|单行操作|行内操作|多行操作|
+|-|-|-|
+|@{ string name = "sa"; string _names = "admin";}|@DateTime.Now.ToString("yyyy-MM-dd")| @{var age = 25;Response.Write("Multi-Line : Age is " + age + "<br />");string name3 = "yoyo";}|
 
+###### 2.分布视图页
 
+  `partialView用于通用局部使用的地方`
+```.cshtml
+//直接使用前端页面返回的是字符串，放入当前位置
+1.@Html.Partial("PartialTest");
+//在指定位置添加一个view，返回void 需要放入大括号 
+2.@{Html.RenderPartial("PartialTest");}
+//返回的是字符串，放入当前位置,需要经过控制器action的处理
+3.@Html.Action("Render", "Second", new { name = "Html.Action" })
+//在指定位置添加一个view,返回void 需要放入大括号,需要经过控制器action的处理
+4.@{Html.RenderAction("Render", "Second", new { name = "Html.RenderAction" });}
+```
+  `Layout母版页`
+  
+  
+ ###### 3.html扩展控件
+ ```.cs
+ /// <summary>
+/// 自定义一个@html.Submit()
+/// </summary>
+/// <param name="helper"></param>
+/// <param name="value">value属性</param>
+/// <param name="defaultClass">预设的class</param>
+/// <returns></returns>
+public static MvcHtmlString Submit(this HtmlHelper helper, string value, string defaultClass = "btn btn-default")
+{
+    var builder = new TagBuilder("input");
+    builder.MergeAttribute("type", "submit");
+    builder.MergeAttribute("value", value);
+    builder.MergeAttribute("class", defaultClass);
+    builder.ToString(TagRenderMode.EndTag);
+    return MvcHtmlString.Create(builder.ToString());
+}
+
+ ```
