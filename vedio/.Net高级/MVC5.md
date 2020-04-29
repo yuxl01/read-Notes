@@ -44,7 +44,7 @@
 ```   
 ###### 3.TempData 
 
-     是定义在ControllerBase中的一个TempDataDictionary类型的字典,基于session可以跨控制器action
+     是定义在ControllerBase中的一个TempDataDictionary类型的字典,基于session可以跨控制器action(存在一次)
      
  ```.cs
  base.TempData["User"] = new User()
