@@ -117,3 +117,68 @@ public static MvcHtmlString Submit(this HtmlHelper helper, string value, string 
 }
 
  ```
+ 
+ ### 四、ioc和mvc的结合
+ 
+###### 1.利用Unity容器实现控制器注入
+
+##### `Unity初始化`
+```.cs
+//1.nuget下载Unity.dll
+//2.实现初始化
+private static void InitIOCContainer()
+{
+    ExeConfigurationFileMap fileMap = new ExeConfigurationFileMap();
+    fileMap.ExeConfigFilename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "CfgFiles\\Unity.Config");//找配置文件的路径
+    Configuration configuration = ConfigurationManager.OpenMappedExeConfiguration(fileMap, ConfigurationUserLevel.None);
+    UnityConfigurationSection section = (UnityConfigurationSection)configuration.GetSection(UnityConfigurationSection.SectionName);
+
+    IUnityContainer container = new UnityContainer();
+    section.Configure(container, "ruanmouContainer");
+    IOCContainer = container;
+}
+public static IUnityContainer IOCContainer
+{
+    private set;
+    get;
+}
+
+static IOCConfig()
+{
+    InitIOCContainer();
+}
+```
+
+##### `替换默认控制器工厂`
+
+```.cs
+public class UnityControllerFactoryNew : DefaultControllerFactory
+{
+    private IUnityContainer UnityContainer
+    {
+        get
+        {
+            return IOCConfig.IOCContainer;
+        }
+    }
+    protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
+    {
+       if (null == controllerType)
+       {
+           return null;
+       }
+       IController controller = (IController)this.UnityContainer.Resolve(controllerType);
+       return controller;
+    }
+    
+    /// <summary>
+    /// 释放
+    /// </summary>
+    /// <param name="controller"></param>
+    public override void ReleaseController(IController controller)
+    {
+        //释放对象
+        //this.UnityContainer..Teardown(controller);//释放对象
+    }
+}
+```
