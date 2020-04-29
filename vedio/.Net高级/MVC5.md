@@ -122,7 +122,7 @@ public static MvcHtmlString Submit(this HtmlHelper helper, string value, string 
  
 ###### 1.利用Unity容器实现控制器注入
 
-##### `Unity初始化`
+##### `Unity初始化一`
 ```.cs
 //1.nuget下载Unity.dll
 //2.实现初始化
@@ -148,7 +148,42 @@ static IOCConfig()
     InitIOCContainer();
 }
 ```
+##### `Unity初始化(加入缓存)`
+```.cs
+   
+public class DIFactory
+{
+    private static object _SyncHelper = new object();
+    private static Dictionary<string, IUnityContainer> _UnityContainerDictionary = new Dictionary<string, IUnityContainer>();
 
+    /// <summary>
+    /// 根据containerName获取指定的container
+    /// </summary>
+    /// <param name="containerName">配置的containerName，默认为defaultContainer</param>
+    /// <returns></returns>
+public static IUnityContainer GetContainer(string containerName = "ruanmouContainer")
+{
+   if (!_UnityContainerDictionary.ContainsKey(containerName))
+   {
+       lock (_SyncHelper)
+       {
+           if (!_UnityContainerDictionary.ContainsKey(containerName))
+           {
+               //配置UnityContainer
+               IUnityContainer container = new UnityContainer();
+               ExeConfigurationFileMap fileMap = new ExeConfigurationFileMap();
+               fileMap.ExeConfigFilename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "CfgFiles\\Unity.Config.xml");
+               Configuration configuration = ConfigurationManager.OpenMappedExeConfiguration(fileMap, ConfigurationUserLevel.None);
+               UnityConfigurationSection configSection =(UnityConfigurationSection)configuration.GetSection(UnityConfigurationSection.SectionName);
+               configSection.Configure(container, containerName);
+               _UnityContainerDictionary.Add(containerName, container);
+            }
+            return _UnityContainerDictionary[containerName];
+        }
+   }
+  
+ }
+```
 ##### `替换默认控制器工厂`
 
 ```.cs
