@@ -18,7 +18,8 @@
 
 ###### 1.ViewData 
     
-    是定义在ControllerBase中的一个ViewDataDictionary类型的字典,在传值的时候键对应的值可以是对象也可以是值。
+        是定义在ControllerBase中的一个ViewDataDictionary类型的字典,在传值的时候键对应的值可以是对象也可以是值
+    在cshtml中调用必须类型转换,因为是Object类型的属性,ViewBag和ViewData数据相通,在cshtml中ViewData可以取ViewBag中的值。
     
 ```.cs
  base.ViewData["User1"] = new User()
@@ -32,7 +33,8 @@
     
 ###### 2.ViewBag
 
-    是定义在ControllerBase中的一个dynamic类型的属性,在传值的时候可以是任意类型,并且编译器将不检查。
+     是定义在ControllerBase中的一个dynamic类型的属性,在传值的时候可以是任意类型,并且编译器将不检查
+    ViewBag和ViewData数据相通,在cshtml中ViewBag可以取ViewData中的值。
     
  ```.cs
   base.ViewBag.Name = "admin";
@@ -53,3 +55,18 @@
      Name = "sa";
  };
 ``` 
+###### 4.model
+    1、后台返回view的时候传入一个对象
+    2、在cshtml中引用这个对象@model namespace.Models.User
+```.cs
+//后台返回
+return View(new User()
+{
+     Id = 78acba-saqwq21-sas-21sas2ffl,
+     Name = "sa";
+});
+
+//前台调用
+@model namespace.Models.User
+string name = base.Model.Name
+```
