@@ -217,3 +217,34 @@ public class UnityControllerFactoryNew : DefaultControllerFactory
     }
 }
 ```
+##### `配置文件配置`
+```.conifg
+<configuration>
+  <configSections>
+    <section name="unity" type="Microsoft.Practices.Unity.Configuration.UnityConfigurationSection, Unity.Configuration"/>
+  </configSections>
+  <unity>
+    <sectionExtension type="Microsoft.Practices.Unity.InterceptionExtension.Configuration.InterceptionConfigurationExtension, Unity.Interception.Configuration"/>
+    <containers>
+      <container name="ruanmouContainer">
+        <extension type="Interception"/>
+        <register type="System.Data.Entity.DbContext, EntityFramework" mapTo="Ruanmou.EF.Model.JDDbContext, Ruanmou.EF.Model"/>
+        <register type="Ruanmou.Bussiness.Interface.IBaseService,Ruanmou.Bussiness.Interface" mapTo="Ruanmou.Bussiness.Service.BaseService, Ruanmou.Bussiness.Service"/>
+        <register type="Ruanmou.Bussiness.Interface.ICategoryCommodityService,Ruanmou.Bussiness.Interface" mapTo="Ruanmou.Bussiness.Service.CategoryCommodityService, Ruanmou.Bussiness.Service">
+          <interceptor type="InterfaceInterceptor"/>
+          <!--<lifetime type="transient" />-->
+          <interceptionBehavior type="Ruanmou.Framework.AOP.LogBehavior, Ruanmou.Framework"/>
+        </register>
+        <register type="Ruanmou.Remote.Interface.ISearch,Ruanmou.Remote.Interface" mapTo="Ruanmou.Remote.Service.SearchService, Ruanmou.Remote.Service"/>
+      </container>
+      
+      <container name="ruanmouContainerGeneric">
+        <register type="System.Data.Entity.DbContext, EntityFramework" mapTo="Ruanmou.EF.Model.JDDbContext, Ruanmou.EF.Model"/>
+        <register type="Ruanmou.Bussiness.Interface.IBaseService`1,Ruanmou.Bussiness.Interface" mapTo="Ruanmou.Bussiness.Service.BaseService`1, Ruanmou.Bussiness.Service"/>
+        <register type="Ruanmou.Bussiness.Interface.ICategoryService,Ruanmou.Bussiness.Interface" mapTo="Ruanmou.Bussiness.Service.CategoryService, Ruanmou.Bussiness.Service"/>
+        <register type="Ruanmou.Bussiness.Interface.ICommodityService,Ruanmou.Bussiness.Interface" mapTo="Ruanmou.Bussiness.Service.CommodityService, Ruanmou.Bussiness.Service"/>
+      </container>
+    </containers>
+  </unity>
+</configuration>
+```
