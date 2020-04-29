@@ -93,6 +93,8 @@ string name = base.Model.Name
 3.@Html.Action("Render", "Second", new { name = "Html.Action" })
 //在指定位置添加一个view,返回void 需要放入大括号,需要经过控制器action的处理
 4.@{Html.RenderAction("Render", "Second", new { name = "Html.RenderAction" });}
+//获取控制器action的路径
+5.@Url.Action("SearchPartialList")
 ```
   `Layout母版页`
   
