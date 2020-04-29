@@ -16,6 +16,9 @@
 
 ### 一、 数据传值的多种方式
 
+|ViewData|ViewBag|TempData|model|
+|-|-|-|-|
+|定义在ControllerBase中的一个ViewDataDictionary类型的字典|定义在ControllerBase中的一个dynamic类型的属性|定义在ControllerBase中的一个TempDataDictionary类型的字典,基于session|框架View提供|
 ###### 1.ViewData 
     
         是定义在ControllerBase中的一个ViewDataDictionary类型的字典,在传值的时候键对应的值可以是对象也可以是值
@@ -70,3 +73,7 @@ return View(new User()
 @model namespace.Models.User
 string name = base.Model.Name
 ```
+### 三、razor语法 html扩展控件
+
+
+
