@@ -21,7 +21,7 @@
 
   - ***[Node](./vedio/Node.md)***
   
-  - ***[Angular](11)***
+  - ***[Angular](./vedio/Angular.md)***
 
 ---
 # ...
