@@ -15,9 +15,9 @@
     - [动态 Handler 映射…](../book/Mvc4kjjm/第二章.md)
 
   - 第三章 Controller 的激活
-    - [总体设计](1##)
-    - [默认实现](1##)
-    - [IoC 的应用](1#)
+    - [总体设计](../book/Mvc4kjjm/第三章.md)
+    - [默认实现](../book/Mvc4kjjm/第三章.md)
+    - [IoC 的应用](../book/Mvc4kjjm/第三章.md)
     
   - 第四章 Model 元数据的解析
     - [Model 元数据及其定制](1##)
