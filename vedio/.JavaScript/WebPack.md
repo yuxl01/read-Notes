@@ -59,3 +59,42 @@ module.exports = {
 }
 ```
 ###### 3、webpack loader加载器
+       加载器主要做一些预处理的工作
+       
+   - 1.安装loader
+     - npm install babel-loader babel babel-core 用以解析js
+     - npm install css-loader style-loader  用以解析css
+     - npm install url-loader file-loader 用以解析文件图片
+     - npm install less-loader less  用以解析less写的文件
+   - 2.配置webpack.config.js
+     - 加入module对象属性，添加rules规则
+        - { test: /.js$/, use: 'babel-loader' },
+        - { test: /.css$/, use: ['style-loader', 'css-loader'] },
+        - {test:/.(jpg|png)$/,use:'url-loader?limit=8192&name=./[name].[ext]'}
+        
+  - ###### `demo`
+  ```.js
+  module: {
+        rules: [
+            //加载js loader
+            { test: /.js$/, use: 'babel-loader' },
+            //style loader 和css-Loader
+            { test: /.css$/, use: ['style-loader', 'css-loader'] },
+            //{test:/.(jpg|png)$/,use:'url-loader?limit=8192&name=./[name].[ext]'}
+            //打包图片  url-loader依赖file-loader
+            {
+                test: /.(jpg|svg|gif|png)$/, use: [{
+                    loader: 'url-loader',
+                    // loader: 'file-loader',
+                    options: {
+                        esModule: false, // 这里设置为false不然图片显示不出来
+                        name: '[name].[ext]',
+                        limit: 8192,
+                        outputPath: './static',//输出路径
+                        publicPath: './dist/static/'//查找路径
+                    }
+                }]
+            }
+        ]
+    }
+  ```
