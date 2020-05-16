@@ -4,73 +4,13 @@
 
 #### 一、JS规范
 
-###### 1.CommonJS
-       采用同步的require方法来加载依赖并返回导出的接口。一个模块可以通过往exports对象上添加属性或者设置module.exports的
-    值来确定导出哪些接口。
-    
-- ##### `优点`
-
-      1.服务端的模块可以被复用
-      2.已经有很多模块供使用了（npm）
-      3.很容易上手使用
-
-- ##### `缺点`
-
-      1.阻塞式的调用不能适用于网络请求，因为网络请求是异步的
-      2.无法同步require多个模块
-
-- ##### `使用方法`
-
-```.js
-    require("module");
-    require("../file.js");
-    exports.doStuff = function(){};
-    module.exports = someValue;
-
-```
-
-###### 1.AMD
-
-    异步require。
-    
-- ##### `优点`
-
-      1.能满足网络请求的异步需求
-      2.能同步加载多个模块
+|名称|描述|优点|缺点|使用方法|
+|-|-|-|-|-|
+|CommonJS|同步require|1.模块可以被复用</br>2.npm支持</br>3.容易上手使用|1.阻塞的调用,网络是异步的</br>2.无法同步require多个模块| require("module");</br>module.exports = someValue;|
+|AMD|异步require|1.能满足网络请求的异步需求</br>2.能同步加载多个模块|1.代码复杂,更难写也更难读</br>2.似乎是一种绕路的笨办法|require(["module","../file.js"],function(module,file){/*...*/});</br>define("mymodule",["dep1","dep2"],function(d1,d2){return someExportValue;});|
+|CMD|一个模块就是一个文件职责单一简单纯粹|...|...|define(function(require,exports,module){//模块代码});|
 
 
-- ##### `缺点`
-
-      1.代码复杂，更难写也更难读
-      2.似乎是一种绕路的笨办法
-
-
-- ##### `使用方法`
-
-```.js
-    require(["module","../file.js"],function(module,file){/*...*/});
-    define("mymodule",["dep1","dep2"],function(d1,d2){
-        return someExportValue;
-    });
-
-```
-
-###### 1.CMD
-    在 CMD 规范中，一个模块就是一个文件，每个 API 都简单纯粹，职责单一
-- ##### `使用方法`
-
-```.js
-
-//define 接受 factory 参数，factory 可以是一个函数，也可以是一个对象或字符串。
-//factory 为对象、字符串时，表示模块的接口就是该对象、字符串。比如可以如下定义一个 JSON 数据模块：
-//factory 为函数时，表示是模块的构造方法。执行该构造方法，可以得到模块向外提供的接口。
-//factory 方法在执行时，默认会传入三个参数：require、exports 和 module
-    
-define(function(require,exports,module){
-    //模块代码
-});
-
-```
 
 #### 二、WebPack使用
 
@@ -82,3 +22,40 @@ define(function(require,exports,module){
 
  - npm install webpack -g  --全局安装webpack
  - npm install webpack@2.0.1 -g --安装指定版本
+ 
+###### 2、编写配置文件
+
+ - 1.在项目根目录下创建webpack.config.js
+
+ - 2.定义module.exports对象配置对应参数
+     - entry: 对象是页面入口文件配置(html文件引入唯一的js文件)
+     
+     - output:对象对应输出项配置
+     
+       - path ：入口文件最终要输出到哪里,必须使用绝对路径
+       
+       - filename：输出文件的名称
+       
+       - publicPath：公共资源路径
+ - 3.使用webpack命令进行打包 webpack -w 进行实时监控
+
+- ###### `demo`
+```.js
+
+//对应2个入口文件和输出文件
+//如果只有一个enter就代表字符串
+//--dirname 代表找到当前绝对路径
+//publicPath图片额外路径跟path不共用
+module.exports = {
+    entry: {
+        index: './src/js/entry.js',
+        index2: './src/js/entry2.js'
+    },
+    output: {
+        filename: '[name].js',
+        path: __dirname + '/dist',
+        publicPath: './dist'
+    }
+}
+```
+###### 3、webpack loader加载器
