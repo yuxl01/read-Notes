@@ -70,5 +70,11 @@ define(function(require,exports,module){
     //模块代码
 });
 
-
 ```
+
+#### 二、WebPack使用
+
+        任何静态资源都可以视作模块，然后模块之间也可以相互依赖，通过webpack对模块进行处理后，可以打包成我们想要的静态资源。
+        
+###### 1、全局安装webpack
+
