@@ -74,7 +74,11 @@ define(function(require,exports,module){
 
 #### 二、WebPack使用
 
-        任何静态资源都可以视作模块，然后模块之间也可以相互依赖，通过webpack对模块进行处理后，可以打包成我们想要的静态资源。
+    任何静态资源都可以视作模块,然后模块之间也可以相互依赖，通过webpack对模块进行处理后，可以打包成我们想要的静态资源。
         
 ###### 1、全局安装webpack
 
+ - npm init --初始化项目
+
+ - npm install webpack -g  --全局安装webpack
+ - npm install webpack@2.0.1 -g --安装指定版本
