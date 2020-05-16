@@ -98,3 +98,33 @@ module.exports = {
         ]
     }
   ```
+###### 4、css 独立打包
+    - 入口文件entry.js 需要引入需要打包的css require('../css/entry.css');
+    - 引入 mini-css-extract-plugin npm install mini-css-extract-plugin 
+    - 配置文件引入 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+    - module rules引入{test:/\.css$/,use: [MiniCssExtractPlugin.loader,{loader: 'css-loader'}]}
+    - plugins插件引入 new MiniCssExtractPlugin()
+    
+ - ###### `DEMO`
+ ```.js
+  module: {
+        rules: [ 
+         {
+            test:/\.css$/,
+            use: [MiniCssExtractPlugin.loader, { loader: 'css-loader', options: { importLoaders: 1 } },]
+            }
+        ]
+       },
+ plugins: [ 
+        new MiniCssExtractPlugin({
+            filename: './css/[name]_[hash].css',
+            chunkFilename: '[id].css',
+            ignoreOrder: false,
+        }),
+    ],
+ ```
+ 
+ ###### 5、webpack 服务器
+ 
+      - 1.下载webpack服务器 npm install webpack-dev-server -g
+      - 2.下载webpack-cli (4.0之后要求的)
