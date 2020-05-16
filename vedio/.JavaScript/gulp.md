@@ -4,7 +4,7 @@
 
     gulp3.0压缩顺序默认是顺序执行的，4.0引入压缩并行的处理方式：当前是4.0
     
-|--save-dev|--save|
+|npm i packName --save-dev|npm i packName --save|
 |-|-|
 |表示开发过程用的包|上线运行依赖的包|
     
