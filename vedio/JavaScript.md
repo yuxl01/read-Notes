@@ -21,5 +21,6 @@
 - #### 正则表达式
 - #### [WebPack](.JavaScript/WebPack.md)
 - #### [Gulp](.JavaScript/gulp.md)
+- #### [ES6-1](.JavaScript/es6_1.md)
 
 
