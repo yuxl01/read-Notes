@@ -4,7 +4,7 @@
   - 2.遵循ecmascript规范，由微软开发
   - 3.ts可以编译成js从而支持js环境运行
   - 4.和js关系如同less和css
-  
+
    
 #### 一、基本语法赋值
 
@@ -129,6 +129,15 @@ console.log(obj1);
 
     构造函数的另一种书写方式,在ecmascript6中新增。
     
+- 1.public 公开访问。
+- 2.private 私有访问。
+- 3.protected 内部和子类才能使用。
+- 4.readonly 只读
+- 5.const 常量
+- 6.static 只能类本身访问 
+
+|public|private|protected|readonly|const||
+    
 ```.ts
 //原来构造对象的方式利用原型
 function Persion(name:string,age:number){
@@ -142,7 +151,6 @@ let p = new Persion("admin",18);
 p.SayHello();
 
 //typescript中定义类
-
 class Person {
    private name: string;
    private age: number;
@@ -164,4 +172,24 @@ class student extends Person{
 }
 let stu = new student("sa",34);
 stu.sayHello();
+
+//简写初始化
+class jxClass{
+    constructor(public name:string,public age:number){}
+}
+var c = new jxClass('sa',12).name
+
+//属性赋值器
+class Student{
+    private _name:number;
+    get name(){return this._name; }
+    set name(val){
+        if(val>10){
+            throw "赋值失败"
+        }
+        this._name =val;
+    }
+}
+var s= new Student();
+s.name =12;
 ```
