@@ -124,3 +124,44 @@ let obj1 = {
 }
 console.log(obj1);
 ```
+
+#### 三、类
+
+    构造函数的另一种书写方式,在ecmascript6中新增。
+    
+```.ts
+//原来构造对象的方式利用原型
+function Persion(name:string,age:number){
+    this.name = name
+    this.age = age
+}
+Persion.prototype.SayHello = function():void{
+    console.log(this.name,this.age);
+}
+let p = new Persion("admin",18);
+p.SayHello();
+
+//typescript中定义类
+
+class Person {
+   private name: string;
+   private age: number;
+    //ts要求类的成员必须先被定义
+    constructor(name: string, age: number) {
+        this.name = name;
+        this.age = age;
+    }
+    sayHello(): void {
+        console.log(this.name, this.age);
+    }
+}
+
+//继承父类
+class student extends Person{
+    constructor(name:string,age:number){
+       super(name,age) 
+    }
+}
+let stu = new student("sa",34);
+stu.sayHello();
+```
