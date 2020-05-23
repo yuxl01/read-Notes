@@ -129,14 +129,9 @@ console.log(obj1);
 
     构造函数的另一种书写方式,在ecmascript6中新增。
     
-- 1.public 公开访问。
-- 2.private 私有访问。
-- 3.protected 内部和子类才能使用。
-- 4.readonly 只读
-- 5.const 常量
-- 6.static 只能类本身访问 
-
-|public|private|protected|readonly|const||
+|public|private|protected|readonly|const|static|
+|-|-|-|-|-|-|
+|公开访问|私有访问|内部和子类才能使用|只读|常量|只能类本身访问|
     
 ```.ts
 //原来构造对象的方式利用原型
