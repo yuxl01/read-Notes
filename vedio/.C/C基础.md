@@ -26,4 +26,44 @@
     1、从硬盘加载内存中
     2、内存与cpu交互并进行处理
     
- 
+### 三、CPU与寄存器
+
+      CPU离的最近的是寄存器，然后就是cpu缓存,内存
+      
+    1、寄存器是cpu内部最基础的存储单元。
+    2、cpu通过总线(地址,控制、数据)和外部设备交互,总线宽度8位
+       寄存器8位，那么cpu就叫8位cpu。
+    3、总线16位.寄存器32位，cpu为准32为cpu
+    
+###### `寄存器`
+
+|8位|16位|32位|64位|
+|-|-|-|-|
+|A|AX|EAX|RAX|
+|B|BX|EBX|RBX|
+|C|CX|ECX|RCX|
+|D|DX|EDX|RDX|
+    
+ ### 四、C语言嵌套汇编代码
+ ```.c
+ #include<stdio.h>
+#include<stdlib.h>
+int main(void)
+{
+	int a, b, c;
+	a = 10;
+	b = 20;
+	c = a + b;
+	printf("%d\n", c);
+
+	__asm {
+		mov a, 3;
+		mov b, 4;
+		mov eax, a;
+		add eax, b;
+		mov c, eax;
+	}
+	printf("%d\n", c);
+	return 0;
+}
+ ```
