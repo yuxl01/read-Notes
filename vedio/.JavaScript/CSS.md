@@ -15,10 +15,12 @@
 |-|-|-|
 
 ###### 2.css选择器
-|id选择器|class选择器|标签选择器|通配符选择器|属性选择器|
-|-|-|-|-|-|
-|#id|.class|div|'*'|[attrbute="only"]|
-|一对一|多对多|标签|所有|包含属性|
+|id选择器|class选择器|标签选择器|通配符选择器|属性选择器|父子选择器|直接子元素选择器|
+|-|-|-|-|-|-|-|
+|#id|.class|div|'*'|[attrbute="only"]|div span|div>span|
+|一对一|多对多|标签|所有|包含属性|只注重父子关系成立|选择父级直接子级|
+
+
 ```.css
 #only{
    background-color:red;//id选择器
@@ -34,6 +36,12 @@ div{
 }
 {
  background-color:red;!importtant//加入属性之后优先级最高
+}
+div span{
+ background-color:red;//父子选择器
+}
+div>span{
+ background-color:red;//直接子元素选择器
 }
 ```
  ###### 3.选择器权重
