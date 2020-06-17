@@ -1,6 +1,6 @@
 
-- ## CSS基础
-####  [CSS-1](.JavaScript/CSS.md)
+- ## CSS学习笔记
+- ####  [CSS-1](.JavaScript/CSS.md)
 
 
 - ## javaScript学习笔记
