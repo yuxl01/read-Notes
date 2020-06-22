@@ -36,15 +36,18 @@ border-radius: 10px;
 ``` 
 
  ### 二、标签 
- 
+   凡是带有inline元素，都有文字特性
  ###### 1.行级元素 
     <span a storng em >
     内容决定元素所占位置,不可以改变宽高。
+    有隐式css属性 display:inLine;
     
  ###### 2.块级元素 
     <div p ul li form>
     独占一行,可以改变宽高。
+    有隐式css属性 display:block;
     
  ###### 3.行级块元素 
     <img 图片布局只设置一个>
     内容决定大小,可以改变宽高。
+    display:inline-block
