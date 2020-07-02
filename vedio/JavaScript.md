@@ -29,5 +29,5 @@
 - #### [Gulp](.JavaScript/gulp.md)
 - #### [ES6-1](.JavaScript/es6_1.md)
 - #### [ES6-2](.JavaScript/es6_2.md)
-
+- #### [Vue](.JavaScript/vue_1.md)
 
