@@ -1,6 +1,6 @@
 * # read-Notes 
 
-***&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When you onto the moon even if you don't,you also will fall among the stars</br>
+***&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Try to get the moon, because even if you fall, you will be among the stars. </br>
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;***
 
 - # ***Book***
