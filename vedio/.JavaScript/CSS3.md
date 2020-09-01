@@ -14,3 +14,27 @@
 |-|-|-|-|-|
 |1.必须是li 2.找到一类中的第一个 |1.必须是li 2.找一类中最后一个|1.必须是li 2.从第一个开始找一类n从0开始|1.必须是li 2.从第最后一个开始找找一类n从0开始|1.必须是li,2.可以有其他元素单是li必须只有一个|
 
+```.html
+<ul>
+       <li>1</li>
+       <li>2</li>
+       <li>3</li>
+   </ul>
+   <div>55</div>
+   <div>66</div>
+```
+```.css
+ul>div{
+    background-color: hotpink;
+}
+ul+div{
+ background-color: hotpink;
+}
+ul~div{
+ background-color: hotpink;
+}
+```
+
+|ul>div|ul+div|ul~div|
+|-|-|-|
+|直接子元素|兄弟节点|所有后面的元素|
