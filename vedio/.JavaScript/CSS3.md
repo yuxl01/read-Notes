@@ -1,7 +1,14 @@
 # CSS3
 
 
-### 1.伪类选择器
+
+### 1.属性选择器
+
+|div[class="demo"]|div[class^="demo"]|div[class$="demo"]|div[class*="demo"]|
+|-|-|-|-|
+|选择属性为class并且值等于demo的div元素|选择属性为class并且值以demo开头的div元素|选择属性为class并且值以demo结尾的div元素|选择属性为class并且值包含demo的div元素|
+
+### 2.伪类选择器
 
 1.子元素必须是li
 |li:first-child|li:last-child|li:nth-child(2n+1)|li:nth-last-child|li:only-child|
