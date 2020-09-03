@@ -45,3 +45,21 @@ ul~div{
 |ul>div|ul+div|ul~div|
 |-|-|-|
 |直接子元素|兄弟节点|所有后面的元素|
+
+
+### 3.columns 多列布局
+| column-count: 3;|  column-width: 200px;| column-gap: 2px;| column-rule: 3px double ;|
+|---|---|---|---|
+|列数|每列宽|间隙宽度|分隔线不占宽度|
+
+### 4.盒模型
+
+###### 1.标准盒模型
+      
+      盒子=content+padding+border
+
+###### 2.IE6混杂盒模型
+      
+      盒子=content-padding-border
+
+
