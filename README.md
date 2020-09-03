@@ -9,19 +9,17 @@
   - ***[《MVC4框架揭秘》](./book/mvc4.md)***
 ---
 
-- # ***Study***
+- # ***FrontEnd***
+  - ***[JavaScript](./vedio/JavaScript.md)***
+  
+  - ***[Angular](./vedio/Angular.md)***
+
+- # ***BackEnd***
 
   - ***[.Net](./vedio/.Net.md)***
 
   - ***[C](####)***
 
-  - ***[JavaScript](./vedio/JavaScript.md)***
-
-
-
-  - ***[Node](####)***
-  
-  - ***[Angular](./vedio/Angular.md)***
 
 ---
 # ...
