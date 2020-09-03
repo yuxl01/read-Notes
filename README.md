@@ -7,6 +7,8 @@
   - ***[《你不知道的js上》](./book/你不知道的JS上.md)***
   
   - ***[《MVC4框架揭秘》](./book/mvc4.md)***
+  
+  - ***[《揭秘Angular2》](./book/angular2.md)***
 ---
 
 - # ***FrontEnd***
