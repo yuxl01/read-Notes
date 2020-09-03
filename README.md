@@ -24,7 +24,7 @@
 
   - ***[.Net](./vedio/.Net.md)***
 
-  - ***[C](####)***
+  - ***[C](./vedio/.md)***
 
 
  - # ***FrontEnd FrameWork***
