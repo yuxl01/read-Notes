@@ -13,13 +13,13 @@
 
   - ***[.Net](./vedio/.Net.md)***
 
-  - ***[C](./vedio/C.md)***
+  - ***[C](####)***
 
   - ***[JavaScript](./vedio/JavaScript.md)***
 
 
 
-  - ***[Node](./vedio/Node.md)***
+  - ***[Node](####)***
   
   - ***[Angular](./vedio/Angular.md)***
 
