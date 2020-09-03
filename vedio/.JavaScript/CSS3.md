@@ -57,9 +57,32 @@ ul~div{
 ###### 1.标准盒模型
       
       盒子=content+padding+border
+      设置 box-sizing: content-box;按照标准解析
 
 ###### 2.IE6混杂盒模型
       
-      盒子=content-padding-border
+      盒子=content-padding-border;
+      设置  box-sizing: border-box;按照混杂模式解析
 
+###### 3.弹性盒子（display:flex）
+```.css
+    .wrapper{
+        width: 500px;
+        height: 200px;
+        background-color:#ccc;
+        display: flex;
+    }
 
+    .wrapper div{
+        width: 100px;
+        height: 100px;
+        flex-grow: 1;
+    }
+```
+``` .html
+ <div class="wrapper">
+   <div class="div1"></div>
+   <div class="div2"></div>
+   <div class="div3"></div>
+ </div>
+```
