@@ -19,8 +19,6 @@
   
   - ***[JavaScript](./vedio/JavaScript.md)***
   
- - # ***FrontEnd FrameWork***
-  - ***[Angular](./vedio/Angular.md)***
 
 - # ***BackEnd***
 
@@ -29,6 +27,9 @@
   - ***[C](####)***
 
 
+ - # ***FrontEnd FrameWork***
+  - ***[Angular](./vedio/Angular.md)***
+  
 ---
 # ...
 
