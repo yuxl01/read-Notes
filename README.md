@@ -13,6 +13,8 @@
 
   - ***[CSS](./vedio/css.md)***
   
+  - ***[TypeScript](./vedio/typescript.md)***
+  
   - ***[JavaScript](./vedio/JavaScript.md)***
   
   - ***[Angular](./vedio/Angular.md)***
