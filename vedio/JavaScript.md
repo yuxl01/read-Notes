@@ -6,7 +6,7 @@
       
    
   
-- ####  [typeOf类型转换](https://github.com/yuxl01/read-Notes/blob/master/vedio/.JavaScript/TypeOf%20%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.md)
+- ####  [typeOf类型转换](.JavaScript/TypeOf类型转换.md)
 - #### [预编译(上)](.JavaScript/函数作用域(上).md)
 - #### 预编译 (下)
 - #### 作用域 
@@ -17,7 +17,7 @@
 - #### 原型、原型链（上）
 - #### 原型、原型链（下）
 - #### 继承，及其他
-- #### Dom操作
+- #### [Dom(一)](.JavaScript/DOM1.md)
 - #### 事件 
 - #### 正则表达式
 - #### [WebPack](.JavaScript/WebPack.md)
