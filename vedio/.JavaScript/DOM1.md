@@ -2,7 +2,6 @@
 
 ### 一、DOM选择器
 
-
 ###### 1.常用选择器
 
 - 1.document.getElementById() 通过选择Id选择器，来选择标签
@@ -27,25 +26,25 @@
 ```
 
 `节点类型`
-|值|描述|
-|--|--|
-|1|元素节点,例如 p标签 和div标签|
-|2|属性节点,例如 class id name|
-|3|文本节点，例如div标签中的文字或者换行符|
-|8|注释节点，注释|
+|值|节点|描述|
+|--|--|--|
+|1|元素节点|例如 p标签 和div标签|
+|2|属性节点|例如 class id name|
+|3|文本节点|例如div标签中的文字或者换行符|
+|8|注释节点|注释|
 
 <br>
 
 `属性`
 
-- 1. dom.childNodes 查找子节点们返回类数组
-- 2. dom.parentNode 获取父节点
-- 3. dom.firstChild 第一个子节点
-- 4. dom.lastChild  最后一个子节点
-- 5. dom.previousSibling 上一个兄弟节点
-- 6. dom.nextSibling 下一个兄弟节点
+|dom.childNodes|dom.parentNode|dom.firstChild|dom.lastChild|dom.previousSibling|dom.nextSibling|
+|-|-|-|-|-|-|
+|查找子节点们返回类数组|获取父节点|第一个子节点|最后一个子节点|上一个兄弟节点|下一个兄弟节点|
 
-- 7. dom.firstElementChild 第一个子元素节点
-- 8. dom.lastElementChild 最后一个子元素节点
-- 9. dom.previousElementSibling 上一个兄弟元素节点
-- 10. dom.nextElementSibling 下一个兄弟元素节点
+|dom.firstElementChild|dom.lastElementChild|dom.previousElementSibling|dom.nextElementSibling|
+|-|-|-|-|
+|第一个子元素节点|最后一个子元素节点|上一个兄弟元素节点|下一个兄弟元素节点|
+
+### DOM树
+
+![原型图片](../../imag/dom.png)
