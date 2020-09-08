@@ -54,3 +54,23 @@
 //less作用域时块级的,又因为延迟加载所以bars中three的值为3
 //又因为one的作用域在.class所以为1
 ```
+
+
+### 3.嵌套规则
+
+    1.基本嵌套规则(父子级)
+    2.&的使用代表平级
+
+```.less
+//如果不添加&将会编译为并列选择器
+//必须使用&符号才能输出css为.wrapper:hover
+.wrapper{
+    border: 1px solid black;
+    width: 300px;
+    height: 500px;
+    margin: 0 auto;
+    &:hover{
+        background-color: green;
+    }
+} 
+```
