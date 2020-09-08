@@ -47,4 +47,4 @@
 
 ### DOM树
 
-![原型图片](../../../imag/dom.png)
+![原型图片](https://github.com/yuxl01/read-Notes/blob/master/imag/dom.jpg)
