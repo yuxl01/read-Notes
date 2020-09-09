@@ -41,10 +41,18 @@
 |-|-|-|-|-|-|
 |查找子节点们返回类数组|获取父节点|第一个子节点|最后一个子节点|上一个兄弟节点|下一个兄弟节点|
 
-|dom.firstElementChild|dom.lastElementChild|dom.previousElementSibling|dom.nextElementSibling|
-|-|-|-|-|
-|第一个子元素节点|最后一个子元素节点|上一个兄弟元素节点|下一个兄弟元素节点|
+|dom.firstElementChild|dom.lastElementChild|dom.previousElementSibling|dom.nextElementSibling|dom.attributes|
+|-|-|-|-|--|
+|第一个子元素节点|最后一个子元素节点|上一个兄弟元素节点|下一个兄弟元素节点|节点对象属性集合|
 
 ### DOM树
 
 ![原型图片](https://github.com/yuxl01/read-Notes/blob/master/imag/dom.jpg)
+
+`由图得知 html标签继承自>HTMLElement>Element`
+
+```.js
+
+HTMLElement.__proto__ === Element.propertypr;
+
+```
