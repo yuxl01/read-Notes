@@ -74,3 +74,69 @@
     }
 }
 ```
+
+###### 4.命名参数
+
+
+```.less
+//封装同功能添加()
+
+//默认参数
+.style(@w：20px,@h:40px,@b:pick){
+    width:@w;
+    height:@h;
+    background-color:@b;
+}
+
+.wrapper{
+    .demo{
+      //命名参数
+      .style(200px,300px,@b:black);  
+    }
+}
+```
+
+###### 5.匹配模式
+
+     在外部调用.triangle(L,40px,black)时由于匹配模式生效,会自动调用triangle()
+
+```.less
+//混合加@_为匹配模式
+.triangle(@_){
+    width: 0px;
+    height: 0px;
+}
+
+//带标识符
+.triangle(L,@bw,@bc){
+    border-width: @bw;
+    border-style:solid;
+    border-color: transparent @bc  transparent   transparent;
+}
+
+.triangle(R,@bw,@bc){
+    border-width: @bw;
+    border-style:solid;
+    border-color: transparent transparent transparent   @bc;
+}
+```
+###### 6.arguments变量
+
+```.less
+.border(@1,@2,@3){
+    border:@arguments;
+}
+.wrapper>.sjx{
+    .border(1px,solid red);
+}
+```
+
+### 7.Less计算
+
+```.less
+.wrapper > .sjx{
+    width: (100px+100);
+    height: 200px;
+    background-color: red;
+}
+```
