@@ -7,8 +7,6 @@
 
   - ***[CSS And less 基础](./vedio/css.md)***
   
-  - ***[Less基础](./vedio/less.md)***
-  
   - ***[TypeScript基础](./vedio/typescript.md)***
   
   - ***[JavaScript基础](./vedio/JavaScript.md)***
