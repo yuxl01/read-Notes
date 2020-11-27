@@ -22,6 +22,7 @@
   - ***[JavaScript](./vedio/JavaScript.md)***
   
 
+
 - # ***BackEnd***
 
   - ***[.Net](./vedio/.Net.md)***
@@ -31,6 +32,8 @@
 
  - # ***FrontEnd FrameWork***
   - ***[Angular](./vedio/Angular.md)***
+  
+  - ***[JavaScript(一)](./vedio/JavaScript1.md)***
   
 ---
 # ...
