@@ -22,3 +22,4 @@
 - #### 正则表达式
 - #### [ES6-1](.JavaScript/es6_1.md)
 - #### [ES6-2](.JavaScript/es6_2.md)
+- #### [ES6-3](.JavaScript/es6_3.md)
