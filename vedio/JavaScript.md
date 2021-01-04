@@ -19,7 +19,7 @@
 - #### 继承，及其他
 - #### [Dom(一)](.JavaScript/DOM1.md)
 - #### 事件 
-- #### 正则表达式
+- #### 正则表达式(.JavaScript/Regx.md)
 - #### [ES6-1](.JavaScript/es6_1.md)
 - #### [ES6-2](.JavaScript/es6_2.md)
 - #### [ES6-3](.JavaScript/es6_3.md)
