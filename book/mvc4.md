@@ -23,3 +23,8 @@
     - [Model 元数据及其定制](1##)
     - [Model 元数据与 Model 模板](1##)
     - [Model 元数据的提供机制](1#)
+    
+    
+  - 第八章 View的呈现
+    - [Razor引擎](../book/Mvc4kjjm/第八章.md)
+    
