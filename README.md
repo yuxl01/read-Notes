@@ -7,16 +7,12 @@
 
   - ***[CSS And less 基础](./vedio/css.md)***
   
-  - ***[TypeScript基础](./vedio/typescript.md)***
-  
   - ***[JavaScript基础](./vedio/JavaScript.md)***
   
 - # ***BackEnd***
 
   - ***[C#](./vedio/.Net.md)***
 
-
-  - ***[C](./vedio/.md)***
 
 
 - # ***BackEnd FrameWork***
