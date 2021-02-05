@@ -19,7 +19,8 @@
   - ***[C#](./vedio/.Net.md)***
   
   - ***[Asp.net Mvc](./vedio/mvc.md)***
-
+  
+  - ***[Asp.net Core && Micro Service](./vedio/CoreServer.md)***
 
 - # ***Book***
 
