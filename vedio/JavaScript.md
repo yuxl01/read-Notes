@@ -1,5 +1,5 @@
 
-- ## javaScript 基础
+- ## JavaScript
 
 
           
