@@ -9,24 +9,16 @@
   
   - ***[JavaScript基础](./vedio/JavaScript.md)***
   
-- # ***BackEnd***
-
-  - ***[C#](./vedio/.Net.md)***
-
-
-
-- # ***BackEnd FrameWork***
-
-  - ***[Asp.net Mvc](./vedio/mvc.md)***
-
-
-
- - # ***FrontEnd FrameWork***
   - ***[Angular](./vedio/Angular.md)***
   
   - ***[JavaScript(一)](./vedio/JavaScript1.md)***
   
----
+- # ***BackEnd***
+
+  - ***[C#](./vedio/.Net.md)***
+  
+  - ***[Asp.net Mvc](./vedio/mvc.md)***
+
 
 - # ***Book***
 
