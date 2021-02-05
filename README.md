@@ -5,13 +5,12 @@
 
 - # ***FrontEnd***
 
-  - ***[CSS And less 基础](./vedio/css.md)***
+  - ***[CSS And less ](./vedio/css.md)***
   
-  - ***[JavaScript基础](./vedio/JavaScript.md)***
+  - ***[JavaScript](./vedio/JavaScript.md)***
   
   - ***[Angular](./vedio/Angular.md)***
   
-  - ***[JavaScript(一)](./vedio/JavaScript1.md)***
   
 - # ***BackEnd***
 
