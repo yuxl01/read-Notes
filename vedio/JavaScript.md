@@ -8,7 +8,7 @@
   
 - ####  [typeOf类型转换](.JavaScript/TypeOf类型转换.md)
 - #### [预编译](.JavaScript/函数作用域(上).md)
-- #### 作用域、作用域链(.JavaScript/作用域.md)
+- #### [作用域、作用域链](.JavaScript/作用域.md)
 - #### 立即执行函数
 - #### 闭包
 - #### 对象,包装类（上）
