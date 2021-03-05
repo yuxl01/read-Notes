@@ -1,6 +1,7 @@
 # typeOf 类型转换
 
       typeof(param):判断输入param的类型,结果值情况：返回字符串描述的数据类型
+      
 
 ### 一、显示类型转换
 
@@ -77,4 +78,18 @@
   //返回false
   NaN==undefined
 ```  
-     
+###### `3、typeof 共返回6种数据格式`
+
+      Array和null返回的都是object 
+      
+      1、object 
+
+      2、undefined
+
+      3、string
+
+      4、number
+
+      5、boolean
+
+      6、function
