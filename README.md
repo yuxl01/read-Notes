@@ -22,6 +22,8 @@
   
   - ***[Asp.net Core && Micro Service](./vedio/CoreServer.md)***
 
+  - ***[DOS](./vedio/DOS.md)***
+
 - # ***Book***
 
   - ***[《领域驱动设计》](./book/领域驱动设计.md)***
