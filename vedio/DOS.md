@@ -38,9 +38,9 @@ pause
 
 ```.cmd
 @echo off
-set \a tmp=10+2
+set /a tmp=10+2
 echo %tmp% > put.txt
-set \a tmp_1 = 10*20
+set /a tmp_1 = 10*20
 echo %tmp_1% >> put.txt
 ```
 
