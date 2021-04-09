@@ -18,9 +18,7 @@
 
   - ***[C#](./vedio/.Net.md)***
   
-  - ***[Asp.net Mvc](./vedio/mvc.md)***
-  
-  - ***[Asp.net Core && Micro Service](./vedio/CoreServer.md)***
+  - ***[Micro Service && Framwork](./vedio/CoreServer.md)***
 
   - ***[DOS](./vedio/DOS.md)***
 
