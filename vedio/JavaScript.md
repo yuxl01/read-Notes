@@ -10,7 +10,7 @@
 - ##### 原型、原型链
 - ##### 继承
 - ##### [Dom](.JavaScript/DOM1.md)
-- ##### [事件] (.JavaScript/sj.md)
+- ##### [事件](.JavaScript/sj.md)
 - ##### [正则表达式](.JavaScript/Regx.md)
 - ##### [ES6-第一节](.JavaScript/es6_1.md)
 - ##### [ES6-第二节](.JavaScript/es6_2.md)
