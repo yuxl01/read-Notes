@@ -40,7 +40,7 @@ div.attachEvent('onClick',function(){
             console.log("蓝色");
         }, false)
 ```
-###### 1.事件捕获
+###### 2.事件捕获
 
   `自外向内传递`
 
@@ -59,4 +59,6 @@ div.attachEvent('onClick',function(){
             console.log("蓝色");
         }, true)
 ```
- 
+###### 3.取消事件模型
+
+  1.取消事件冒泡：e.cancelBubble =true Ie独有谷歌已经实现   e.stopPropagation();   
