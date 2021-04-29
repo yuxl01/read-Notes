@@ -19,4 +19,5 @@ div.attachEvent('onClick',function(){
 
 ### 二、事件模型
 
+  先捕获后冒泡
 
