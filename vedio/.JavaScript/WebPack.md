@@ -24,6 +24,10 @@
  - npm install webpack@2.0.1 -g --安装指定版本
  
 ###### 2、编写配置文件
+ 
+`更改webpack配置文件名字：打包用 webpack --config webpack.config.custom.js`
+
+      
 
  - 1.在项目根目录下创建webpack.config.js
 
