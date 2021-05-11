@@ -1,11 +1,33 @@
-# 组件
+# 指令
 
-### 一、组件是什么？
   
-    组件用来包装特定功能,应用程序有序运行依赖不同组件的协作。
+   1.组件是什么?  应用程序有序运行依赖不同组件的协作。
+   2.指令是什么?  扩展现有元素样式和结构
     
-### 二、组件标准
+### 一、指令分类
+  
+  |属性型指令|结构型指令|组件|
+  |-|-|-|
+  |用于改变目标元素的样式和行为|用于改变目标元素的DOM结构|特殊的指令|
+  
+  
+### 二、指令使用
 
-  |自定义元素|模板|shadow Dom|html导入|
-  |-|-|-|-|
-  |允许创建自定义html标记和元素，并且有自己的样式和脚本||||
+```.ts
+ng g d appHighlight
+
+
+import { Directive, ElementRef } from '@angular/core';
+
+@Directive({
+  selector: '[appAppHighlight]'
+})
+export class AppHighlightDirective {
+
+  constructor(el: ElementRef) {
+    el.nativeElement.style.backgroundColor = 'yellow';
+ }
+
+}
+
+```
