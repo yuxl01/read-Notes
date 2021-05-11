@@ -20,7 +20,10 @@ ng g d appHighlight
 import { Directive, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[appAppHighlight]'
+  selector: 'InputItem[type=money]:[money-Text],[Text]',
+   host: {
+    '(onFocus)': 'onFocus($event.target)',
+  },
 })
 export class AppHighlightDirective {
 
@@ -28,6 +31,9 @@ export class AppHighlightDirective {
     el.nativeElement.style.backgroundColor = 'yellow';
  }
 
+onFocus = () => {
+   //dosomting
+  };
 }
 
 ```
