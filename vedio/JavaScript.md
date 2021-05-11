@@ -12,7 +12,7 @@
 - ##### [Dom](.JavaScript/DOM1.md)
 - ##### [事件](.JavaScript/sj.md)
 - ##### [正则表达式](.JavaScript/Regx.md)
-- ##### [ES6-第一节](.JavaScript/es6_1.md)
+- ##### [ES6](.JavaScript/es6_1.md)
 - ##### [WebPack基础](.JavaScript/WebPack.md)
 - ##### [Gulp打包](.JavaScript/gulp.md)
 - ##### [Vue框架](.JavaScript/vue_1.md)
