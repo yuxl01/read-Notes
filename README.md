@@ -7,7 +7,7 @@
 
 - # 视频
 
-  - ###### [CSS And less ](./vedio/css.md)
+  - ###### [CSS & Less ](./vedio/css.md)
   
   - ###### [JavaScript](./vedio/JavaScript.md)
   
