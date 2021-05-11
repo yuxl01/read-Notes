@@ -37,3 +37,27 @@ onFocus = () => {
 }
 
 ```
+### 模板<ng-template> 和ngTemplateOutlet
+    
+    1.ngTemplateOutlet可以在模板中创建内嵌式图
+    
+`静态嵌入`
+```.ts
+<div [ngTemplateOutlet]="test"></div>
+<ng-template #test>模板 </ng-template>
+```
+`动态嵌入`
+```.ts
+  //获取视图引用,static：true为变更检测运行前解析
+  @ViewChild('vc', { static: true, read: ViewContainerRef })
+  vc!: ViewContainerRef;
+  
+  //获取模板引用
+  @ViewChild('test', { static: true }) tpl!: TemplateRef<void>;
+
+
+  ngOnInit(): void {
+    //将模板动态插入到视图引用实例上
+    this.vc.createEmbeddedView(this.tpl);
+  }
+```
