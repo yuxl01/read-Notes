@@ -15,7 +15,7 @@
 
   - ###### [C#](./vedio/.Net.md)
   
-  - ###### [Micro Service && Framwork](./vedio/CoreServer.md)
+  - ###### [.Net架构](./vedio/CoreServer.md)
 
   - ###### [C & C++](./vedio/C.md)
 
