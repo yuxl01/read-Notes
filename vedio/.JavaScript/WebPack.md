@@ -19,9 +19,36 @@
 ###### 1、全局安装webpack
 
  - npm init --初始化项目
-
  - npm install webpack -g  --全局安装webpack
  - npm install webpack@2.0.1 -g --安装指定版本
+ 
+ ```.json
+       {
+  "name": "WebPack-Test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js",
+    "dev": "webpack-dev-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^5.2.4",
+    "html-webpack-plugin": "^4.3.0",
+    "less": "^3.11.3",
+    "less-loader": "^6.1.0",
+    "style-loader": "^2.0.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {}
+}
+
+ ```
  
 ###### 2、编写配置文件
  
@@ -32,36 +59,61 @@
  - 1.在项目根目录下创建webpack.config.js
 
  - 2.定义module.exports对象配置对应参数
-     - entry: 对象是页面入口文件配置(html文件引入唯一的js文件)
-     
-     - output:对象对应输出项配置
-     
-       - path ：入口文件最终要输出到哪里,必须使用绝对路径
-       
-       - filename：输出文件的名称
-       
-       - publicPath：公共资源路径
- - 3.使用webpack命令进行打包 webpack -w 进行实时监控
 
-- ###### `demo`
-```.js
+   
+ ```.js
+ const path = require("path"),
+  HtmlWebpackPlugin1 = require("html-webpack-plugin");
 
-//对应2个入口文件和输出文件
-//如果只有一个enter就代表字符串
-//--dirname 代表找到当前绝对路径
-//publicPath图片额外路径跟path不共用
 module.exports = {
-    entry: {
-        index: './src/js/entry.js',
-        index2: './src/js/entry2.js'
-    },
-    output: {
-        filename: '[name].js',
-        path: __dirname + '/dist',
-        publicPath: './dist'
-    }
-}
-```
+  mode: "development",//production development
+  //配置内部服务器
+  devServer: {
+    port: 4200,
+    progress: true,
+    contentBase: "./dist",
+  },
+  //入口地址
+  entry: "./src/index.js",
+  //输出目录
+  output: {
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist"),
+  },
+  //插件
+  plugins: [
+    //打包html 插件
+    new HtmlWebpackPlugin1({
+      template: "./src/index.html",
+      filename: "index.html",
+      minify: {
+        //删除标点
+        removeAttributeQuotes: true,
+        //折叠为一行
+        collapseWhitespace: true,
+      },
+      hash: true,
+    }),
+  ],
+  module: {
+    //规则 css-loader
+    // style-loader 将css插入到html
+    // loader 加载顺序默认从右向左执行
+    rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+      // loader 加载顺序默认从右向左执行
+      {
+        test: /\.less$/,
+        use: ["style-loader", "css-loader", "less-loader"],
+      },
+    ],
+  },
+};
+
+ ```
 ###### 3、webpack loader加载器
        加载器主要做一些预处理的工作
        
@@ -70,6 +122,7 @@ module.exports = {
      - npm install css-loader style-loader  用以解析css
      - npm install url-loader file-loader 用以解析文件图片
      - npm install less-loader less  用以解析less写的文件
+     
    - 2.配置webpack.config.js
      - 加入module对象属性，添加rules规则
         - { test: /.js$/, use: 'babel-loader' },
@@ -103,32 +156,6 @@ module.exports = {
     }
   ```
 ###### 4、css 独立打包
-    - 入口文件entry.js 需要引入需要打包的css require('../css/entry.css');
-    - 引入 mini-css-extract-plugin npm install mini-css-extract-plugin 
-    - 配置文件引入 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-    - module rules引入{test:/\.css$/,use: [MiniCssExtractPlugin.loader,{loader: 'css-loader'}]}
-    - plugins插件引入 new MiniCssExtractPlugin()
-    
- - ###### `DEMO`
- ```.js
-  module: {
-        rules: [ 
-         {
-            test:/\.css$/,
-            use: [MiniCssExtractPlugin.loader, { loader: 'css-loader', options: { importLoaders: 1 } },]
-            }
-        ]
-       },
- plugins: [ 
-        new MiniCssExtractPlugin({
-            filename: './css/[name]_[hash].css',
-            chunkFilename: '[id].css',
-            ignoreOrder: false,
-        }),
-    ],
- ```
+
  
- ###### 5、webpack 服务器
- 
-      - 1.下载webpack服务器 npm install webpack-dev-server -g
-      - 2.下载webpack-cli (4.0之后要求的)
+
