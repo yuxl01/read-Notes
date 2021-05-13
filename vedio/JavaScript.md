@@ -16,3 +16,4 @@
 - ##### [WebPack基础](.JavaScript/WebPack.md)
 - ##### [Gulp打包](.JavaScript/gulp.md)
 - ##### [Vue框架](.JavaScript/vue_1.md)
+- ##### [Git](.JavaScript/git.md)
