@@ -58,6 +58,9 @@ describe("AppComponent", () => {
 |  expect(a).toContain('bar');|验证a是否包含bar属性|
 |expect.toBeGreaterThan,toBeLessThan|比较大小|
 | expect(bar).toThrow();|测试一个方法是否抛出异常|
+|expect().toBeTruthy()|是否为true|
+|expect().toBeFalsy()|是否为false|
+
 
 #### 4.The Runner and Reporter
 
