@@ -22,11 +22,13 @@
 |Matchers|匹配校验规则,jasmine中有很多Matchers方法给我使用,我们也可以定义自己的Matchers方法|
 |beforeEach()|为了代码简洁,减少重复性的工作 beforeEach会在每个spec之前执行|
 |afterEach()|为了代码简洁,减少重复性的工作 afterEach会在每个spec之后执行|
-
+|xdescribe()|禁用测试用例|
+|xit|禁用测试点|
 
 ```.js
 //一个最基本的测试用例
 //describe和it作为方法是可以嵌套的,describe中可以出现子describe和it
+//在嵌套describe的情况，在it之前会按照由外靠内的顺序执行beforeEach，结束后又由内到外执行afterEach。
 describe("AppComponent", () => {
   //befor 执行...
   //测试的case 1
