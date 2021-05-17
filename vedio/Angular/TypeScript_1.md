@@ -48,6 +48,7 @@ let p: Person = {
 }
 
 
+
 //在不确定的时候可以用,尽量少用，也不会有智能提示
 let c:any=123;
 c='2'
@@ -124,6 +125,18 @@ let obj1 = {
 }
 console.log(obj1);
 ```
+`只读数组`
+```.ts
+ export interface Foo_bars {
+  readonly id: string;
+  readonly name: string | null;
+}
+ 
+export interface Foo {
+  readonly bars: ReadonlyArray<foo_bars>;
+}
+```
+
 
 #### 三、类
 
@@ -187,4 +200,39 @@ class Student{
 }
 var s= new Student();
 s.name =12;
+```
+
+
+#### 四、泛型
+
+###### 1.泛型接口&泛型类&泛型方法
+```.ts
+//泛型接口
+interface GenericIdentityFn<T> {
+    (arg: T): T;
+}
+
+//泛型类
+class GenericNumber<T> {
+    zeroValue: T;
+    add: (x: T, y: T) => T;
+}
+
+//泛型方法
+function identity<T>(arg: T): T {
+    return arg;
+}
+```
+
+###### 2.泛型约束
+
+```.ts
+interface Lengthwise {
+    length: number;
+}
+
+function loggingIdentity<T extends Lengthwise>(arg: T): T {
+    console.log(arg.length);  
+    return arg;
+}
 ```
