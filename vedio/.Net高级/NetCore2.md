@@ -194,7 +194,7 @@ bool bResult = object.ReferenceEquals(interface, interface2);
     2、在Program网站启动时替换默认IOC工厂实例为Autofac，UseServiceProviderFactory(new AutofacServiceProviderFactory())
     3. 在Startup类中添加方法public void ConfigureContainer(ContainerBuilder services){services.RegisterType<TestServiceE>().As<ITestServiceE>().SingleInstance();}
     
-     ```.cs
+  ```.cs
    //返回值为IServiceProvider
    public IServiceProvider ConfigureContainer(ContainerBuilder services)
    {
@@ -243,7 +243,7 @@ using  Autofac.Extras.DynamicProxy;
 //创建类库继承自IInterceptor实现接口
 /// 自定义的Autofac的AOP扩展
 
-  //注册吗，模块
+  //注册，模块
  public class CustomAutofacModule : Module
  {
       //重新load 添加注册服务
