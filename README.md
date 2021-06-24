@@ -15,8 +15,6 @@
 
   - ###### [C#](./vedio/.Net.md)
   
-  - ###### [.Net架构](./vedio/CoreServer.md)
-
   - ###### [C & C++](./vedio/C.md)
 
   - ###### [DOS](./vedio/DOS.md)
