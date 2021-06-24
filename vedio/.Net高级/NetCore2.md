@@ -95,7 +95,7 @@ bool bResult = object.ReferenceEquals(interface, interface2);
  //b is false 
     
    ```
-  ### 三、AutoFac基础
+  ### 三、自带IOC容器(IServiceCollection)基础
     
    ##### 1.生命周期
    
