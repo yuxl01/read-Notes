@@ -96,7 +96,8 @@ bool bResult = object.ReferenceEquals(interface, interface2);
     
    ```
   ### 三、自带IOC容器(IServiceCollection)基础
-    
+      
+      
    ##### 1.生命周期
    
       //瞬时，即时构造，即时销毁
@@ -180,8 +181,13 @@ bool bResult = object.ReferenceEquals(interface, interface2);
       2.输出C
       3.输出D
       4.输出E
-   
+      
+        
+`如果不想通过构造全部自动注入,能自定义注入`
     
+      1.using Microsoft.Extensions.DependencyInjection;
+      2.首先注入 IServiceProvider serviceProvider，利用serviceProcider.GetService<ITestServiceA>();生成需要的实例
+  
     
   ### 四、利用AutoFac容器替换自带容器
     1、重写ConfigureServices将返回值为IServiceProvider
