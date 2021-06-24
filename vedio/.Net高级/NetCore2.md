@@ -95,8 +95,95 @@ bool bResult = object.ReferenceEquals(interface, interface2);
  //b is false 
     
    ```
+  ### 三、AutoFac基础
+    
+   ##### 1.生命周期
    
-  ### 三、利用AutoFac容器替换自带容器
+      //瞬时，即时构造，即时销毁
+      services.AddTransient<ITestServiceA, TestServiceA>();
+      //单例，永远只构造一次
+      services.AddSingleton<ITestServiceB, TestServiceB>();
+      //作用域单例，一次请求只构造一个
+      services.AddScoped<ITestServiceC, TestServiceC>(); 
+      
+   ```.cs
+   public TestServiceA()
+   {
+       Console.WriteLine($"{this.GetType().Name}被构造。。。");
+   }
+   
+   public TestServiceB(ITestServiceA iTestServiceA)
+   {
+       Console.WriteLine($"{this.GetType().Name}被构造。。。");
+   }
+   
+   public TestServiceC(ITestServiceB iTestServiceB)
+   {
+    Console.WriteLine($"{this.GetType().Name}被构造。。。");
+   }
+   
+   public TestServiceD()
+   {
+       Console.WriteLine($"{this.GetType().Name}被构造。。。");
+   }
+
+  public TestServiceE(ITestServiceC serviceC)
+  {
+      Console.WriteLine($"{this.GetType().Name}被构造。。。");
+  }
+
+  //1.A类构造
+  //2.B类构造需要A类
+  //3.C类构造需要B类
+  //4.D类构造
+  //5.E类构造需要C类
+  
+  //瞬时
+  services.AddTransient<ITestServiceA, TestServiceA>();
+  //单例
+  services.AddSingleton<ITestServiceB, TestServiceB>();
+  //作用域单例
+  services.AddScoped<ITestServiceC, TestServiceC>();
+  //瞬时
+  services.AddTransient<ITestServiceD, TestServiceD>();
+  //瞬时
+  services.AddTransient<ITestServiceE, TestServiceE>();
+   ```
+   
+ `第一次请求解析`
+ 
+      1.开始构造A类，因为是瞬时生命周期那么第一次请求就会被构造，然后销毁
+      2.在构造B类时需要A类，那么会首先构造A类(因为A类瞬时上一次已经被销毁)，然后构造B类为单例
+      3.开始构造C，在构造时需要B类，因为B类全局单例，那就会直接构造C为作用域单例
+      4.直接构造瞬时D类
+      5.开始构造E类，构造式需要C类，因为C类为作用域单例，那么就会直接构造E类为瞬时
+ 
+  `第一次请求结论`
+ 
+      1.输出A
+      2.输出A，B
+      3.输出C
+      4.输出D
+      5.输出E
+      
+ `第二次请求解析`
+ 
+      1.开始构造A类，因为是瞬时生命周期那么第二次请求就会重新被构造，然后销毁
+      2.在构造B类时因为在第一次请求时已经构造为单例，所以不再被构造
+      3.开始重新构造C，因为C在第二次请求为新的作用域,在构造时需要B类，因为B类全局单例，那就会直接构造C为作用域单例
+      4.直接构造瞬时D类
+      5.开始构造E类，构造式需要C类，因为C类为作用域单例，那么就会直接构造E类为瞬时
+      
+`第二次请求结论`
+     
+      1.输出A
+      2.输出C
+      3.输出D
+      4.输出E
+   
+    
+    
+  ### 四、利用AutoFac容器替换自带容器
     1、重写ConfigureServices将返回值为IServiceProvider
     2、引入对应容器
   
