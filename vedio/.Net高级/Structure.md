@@ -33,7 +33,7 @@
      2、只要内部有IEnumerator GetEnumerator() 就可以使用foreach
      
 ###### `2 :特点和原理`
-     1、实现迭代器模式
+     1、实现迭代器模式,
  ```.cs
  //定义访问器
  public interface IIterator<T>
@@ -147,6 +147,11 @@ public IEnumerable<int> Power()
 ```
     1、yield必须出现在IEnumerable。
     2、yield是迭代器的状态机，可以做到延迟查询，按需加载。
+    
+###### 4.`总结`
+     
+          如果一个类定义成可以被foreach,那么必须实现IEnumerable，或者类中有IEnumerator GetEnumerator()方法
+       并且需要自己实现迭代器IIterator，执行顺序 当访问循环对应可迭代数据源时会去内部的迭代器搜索并返回数据
 
 ### 四、dynamic关键字
      
