@@ -190,10 +190,29 @@ bool bResult = object.ReferenceEquals(interface, interface2);
   
     
   ### 四、利用AutoFac容器替换自带容器
-    1、重写ConfigureServices将返回值为IServiceProvider
-    2、引入对应容器
-  
+    1、下载Autofac.Extensions.DependencyInjection和Autofac包
+    2、在Program网站启动时替换默认IOC工厂实例为Autofac，UseServiceProviderFactory(new AutofacServiceProviderFactory())
+    3. 在Startup类中添加方法public void ConfigureContainer(ContainerBuilder services){services.RegisterType<TestServiceE>().As<ITestServiceE>().SingleInstance();}
+    
+     ```.cs
+   //返回值为IServiceProvider
+   public IServiceProvider ConfigureContainer(ContainerBuilder services)
+   {
+    services.Configure<CookiePolicyOptions>(options =>
+    {
+        options.CheckConsentNeeded = context => true;
+        options.MinimumSameSitePolicy = SameSiteMode.None;
+    });
+    services.AddSession();
+    services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+    //services.RegisterType<TestServiceE>().As<ITestServiceE>().SingleInstance();
+     services.RegisterModule<CustomMoudle>();
+
+  }
+ ```
+    
   ```.cs
+  //批量注册模块
  public class CustomAutofacModule : Module
  {
       //重新load 添加注册服务
@@ -215,34 +234,7 @@ bool bResult = object.ReferenceEquals(interface, interface2);
  }
   ```
   
- ```.cs
- //返回值为IServiceProvider
- public IServiceProvider ConfigureServices(IServiceCollection services)
- {
-  services.Configure<CookiePolicyOptions>(options =>
-  {
-      options.CheckConsentNeeded = context => true;
-      options.MinimumSameSitePolicy = SameSiteMode.None;
-  });
-  services.AddSession();
-  services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-  
-  //1、实例容器
-  var containerBuilder = new ContainerBuilder();
-  //注册一个模块已减少注册代码
-  //也可以直接注册
-  //containerBuilder.RegisterType<TestServiceA>().As<ITestServiceA>().SingleInstance()
-  containerBuilder.RegisterModule<CustomAutofacModule>();
-  
-  //替换完容器，构造控制器需要的参数，是autofac做的，但是控制器本身是ServiceCollection做的
-  //将services中的服务填充到Autofac中.
-  //containerBuilder.Populate(services)的意思是将所有的创建全部交给Autofac
-  containerBuilder.Populate(services);
-  IContainer container = containerBuilder.Build();
-  return new AutofacServiceProvider(container);
-}
- ```
 ###  四、利用AutoFac实现AOP
 `1、基本使用`
  ```.cs
@@ -251,7 +243,7 @@ using  Autofac.Extras.DynamicProxy;
 //创建类库继承自IInterceptor实现接口
 /// 自定义的Autofac的AOP扩展
 
-
+  //注册吗，模块
  public class CustomAutofacModule : Module
  {
       //重新load 添加注册服务
