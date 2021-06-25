@@ -7,16 +7,16 @@
 
 - #### 视频
 
-  - ###### [CSS & Less ](./vedio/css.md)
-  
-  - ###### [JavaScript](./vedio/JavaScript.md)
-  
-  - ###### [Angular](./vedio/Angular.md)
-
   - ###### [C#](./vedio/.Net.md)
   
   - ###### [.Net Core](./vedio/mvc.md)
+
+  - ###### [JavaScript](./vedio/JavaScript.md)
+ 
+  - ###### [CSS & Less ](./vedio/css.md)
   
+  - ###### [Angular](./vedio/Angular.md)
+
   - ###### [C & C++](./vedio/C.md)
 
   - ###### [DOS](./vedio/DOS.md)
