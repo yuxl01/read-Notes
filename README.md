@@ -15,6 +15,8 @@
 
   - ###### [C#](./vedio/.Net.md)
   
+  - ###### [.Net Core](./vedio/mvc.md)
+  
   - ###### [C & C++](./vedio/C.md)
 
   - ###### [DOS](./vedio/DOS.md)
@@ -33,3 +35,5 @@
 ##### ...
 
 *  [工作随笔](./work/_question.md)
+
+
