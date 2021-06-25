@@ -235,7 +235,7 @@ bool bResult = object.ReferenceEquals(interface, interface2);
   ```
   
 
-###  四、利用AutoFac实现AOP
+###  五、利用AutoFac实现AOP
 `1、基本使用`
  ```.cs
 // 1、NuGet安装引用Autofac.Extras.DynamicProxy;
