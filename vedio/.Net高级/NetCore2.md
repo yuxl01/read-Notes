@@ -1,4 +1,4 @@
-# .NetCore(二)
+# .NetCore(依赖注入)
 
 ### 一、配置文件的读取
   `利用Startup类中的configuration读取appsettings.json中的配置`
