@@ -12,7 +12,12 @@
   "option1": "value1_from_json",
   "option2": 2,
   "subsection": {
-    "suboption1": "subvalue1_from_json"
+    "suboption1": "subvalue1_from_json",
+    "Read": [
+      "Data Source=.; Database=Customers_New1; User ID=sa; Password=Passw0rd; MultipleActiveResultSets=True",
+      "Data Source=ElevenPC; Database=Customers_New2; User ID=sa; Password=Passw0rd; MultipleActiveResultSets=True",
+      "Data Source=.; Database=Customers_New3; User ID=sa; Password=Passw0rd; MultipleActiveResultSets=True"
+    ]
   },
   "wizards": [
     {
@@ -37,6 +42,7 @@
  
  this.Configuration["Option1"]
  this.Configuration["subsection:suboption1"]
+ string[] _SqlConnectionStringRead = this._iConfiguration.GetSection("subsection").GetSection("Read").GetChildren().Select(s => s.Value).ToArray();
  ```
  
  ### 二、自带IOC容器
