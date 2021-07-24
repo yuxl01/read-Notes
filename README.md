@@ -13,7 +13,7 @@
 
   - ###### [JavaScript & Css& Less](./vedio/JavaScript.md)
   
-  - ###### [前段框架](./vedio/Angular.md)
+  - ###### [前端框架](./vedio/Angular.md)
 
   - ###### [C & C++](./vedio/C.md)
 
