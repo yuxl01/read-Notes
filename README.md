@@ -12,10 +12,8 @@
   - ###### [.Net Core](./vedio/mvc.md)
 
   - ###### [JavaScript & Css& Less](./vedio/JavaScript.md)
- 
-  - ###### [CSS & Less ](./vedio/css.md)
   
-  - ###### [Angular](./vedio/Angular.md)
+  - ###### [前段框架](./vedio/Angular.md)
 
   - ###### [C & C++](./vedio/C.md)
 
