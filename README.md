@@ -19,6 +19,8 @@
 
   - ###### [C & C++](./vedio/C.md)
 
+
+  - ###### [数据结构](./vedio/DataStruct.md)
   - ###### [DOS](./vedio/DOS.md)
 
 - #### Book
