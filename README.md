@@ -11,7 +11,7 @@
   
   - ###### [.Net Core](./vedio/mvc.md)
 
-  - ###### [JavaScript](./vedio/JavaScript.md)
+  - ###### [JavaScript & Css& Less](./vedio/JavaScript.md)
  
   - ###### [CSS & Less ](./vedio/css.md)
   
