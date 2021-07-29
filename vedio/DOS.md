@@ -83,6 +83,7 @@ pause
 |dir\|find ".txt" |查找文件|dir\|find ".txt"|
 |set|单个查看环境变量|set|
 |set|变量赋值|set a=123|
+|%a%|变量取值|echo %a%|
 |mkdir|建立文件夹或者文件|mkdir file ;mkdir 1.txt|
 |/? /help|获取帮助信息|netstat /?或者 netstat /help 详细帮助|
 
