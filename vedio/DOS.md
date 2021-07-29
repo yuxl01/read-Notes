@@ -6,7 +6,8 @@
     1.微软系统自带的原生开发语言，不需要构建任何开发环境就可以执行的脚本。
     2.可以匹配文件。新建文件日志这些
     3.ping cls ipconfig 
-
+    4.^ 语句换行
+    5.set a=3 赋值不能有空格
 
 ### 2.输出Hello World
 
@@ -111,7 +112,7 @@ pause
 @echo off
 echo 使用goto命令
 goto last
-set tmp = "Hello World"
+set tmp="Hello World"
 echo %tmp%
 @rem 设置跳到的标识
 :last
@@ -134,5 +135,25 @@ echo 使用start命令
 @rem 开始一个新的程序窗口，标题为new window 等待新窗口执行 在新窗口执行输出New window
 start 'new window' /wait echo new window
 echo
+pause
+```
+
+###### `if 逻辑控制命令`
+
+    1.if exist & if not exist 条件为真或为假
+    2. if string==string () else ()
+    3. if number==number () else ()
+    4. if /i  A==a  (echo 123)  else  echo 234 忽略大小写
+    
+|EQU|NEQ| LSS|LEQ|GTR|GEQ|
+|-|-|-|-|-|-|
+|等于|不等于|小于|小于或等于|大于|大于或等于|
+    
+```.cmd
+start /max
+@echo off
+echo use if command
+@rem 
+if exist a.txt (echo find file) else (no find)
 pause
 ```
