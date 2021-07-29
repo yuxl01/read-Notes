@@ -11,7 +11,8 @@
 ### 2.输出Hello World
 
 ``` .bat
-@echo off
+//关闭命令显示
+@echo off 
 echo Hello World
 pause
 ```
