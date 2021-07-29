@@ -145,9 +145,9 @@ pause
     3. if number==number () else ()
     4. if /i  A==a  (echo 123)  else  echo 234 忽略大小写
     
-|EQU|NEQ| LSS|LEQ|GTR|GEQ|
-|-|-|-|-|-|-|
-|等于|不等于|小于|小于或等于|大于|大于或等于|
+|EQU|NEQ| LSS|LEQ|GTR|GEQ|/i|
+|-|-|-|-|-|-|-|
+|等于|不等于|小于|小于或等于|大于|大于或等于|忽略大小写|
     
 ```.cmd
 start /max
