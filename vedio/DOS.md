@@ -100,3 +100,39 @@ pause
 ```
         例如有一个test.cmd批处理，跳转到所在目录然后执行test.cmd 参数1 参数2 
     就可以调用这个批处理输出 用户输入的2个参数值
+
+##### 2.基本命令 
+
+###### `goto 流程控制转向`
+  
+    1命令格式  goto lable (:lable)
+
+```.cmd
+@echo off
+echo 使用goto命令
+goto last
+set tmp = "Hello World"
+echo %tmp%
+@rem 设置跳到的标识
+:last
+echo 跳过命令之后执行的语句
+pause
+```
+
+###### `start 重新启用一个单独的命令窗口，然后在新窗口执行指定命令`
+ 
+`[]中为变量`
+  
+    1.  start ["Title"] 设置命令窗口的标题
+    2.  start /max & /min 设置命令窗口最大最小化
+    3.  start /wait 等待新窗口执行结束
+
+```.cmd
+start /max
+@echo off
+echo 使用start命令
+@rem 开始一个新的程序窗口，标题为new window 等待新窗口执行 在新窗口执行输出New window
+start 'new window' /wait echo new window
+echo
+pause
+```
